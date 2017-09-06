@@ -1,0 +1,74 @@
+<ion-header>
+  <div class="headerBarBump"></div>
+  <div class="customHeaderClass">
+    <img src="assets/img/menu.png" class="menuIcon" /> PostScript
+  </div>
+</ion-header>
+
+
+
+
+
+<ion-content class="outer-content">
+   <!-- <div class="about-header headerTitle"> -->
+  
+      <!-- <h4 class="slide-in-top"> Click on the categories below to tell us about your loved one. </h4> -->
+     <!-- <img class="logo heartbounce" src="assets/img/one.png" alt="ionic logo">-->
+  <!-- </div> -->
+  <div class="center">
+<p>  Understanding your loved one </p>
+<div id="myProgress">
+  <div style="width: 15%;"  id="myBar"></div>
+</div>
+</div>
+<br />
+<div style="padding-bottom: 30%;" class="bgCard">
+<br />
+    <ion-row >
+    <h2>  <b>Tell us about your loved one.</b> </h2>
+   </ion-row>
+
+
+
+   <ion-list no-lines>
+
+
+    <ion-item>
+        <ion-label stacked class="inputLabelText"> First Name </ion-label>
+          <ion-input placeholder="First Name" class="inputField" [(ngModel)]="firstName"></ion-input>
+    </ion-item>
+
+ 
+        <ion-item>
+        <ion-label stacked class="inputLabelText"> Middle Name </ion-label>
+          <ion-input placeholder="Middle Name" class="inputField" [(ngModel)]="middleName"></ion-input>
+        </ion-item>
+  
+        <ion-item>
+        <ion-label stacked class="inputLabelText"> Last Name </ion-label>
+          <ion-input placeholder="Last Name" class="inputField" [(ngModel)]="lastName"></ion-input>
+        </ion-item>
+
+
+     
+
+
+ </ion-list>
+
+</div>
+
+
+
+</ion-content>
+
+<ion-footer>
+  <ion-row>
+    <ion-col style="padding: 0;">
+         <button  class="footerButtonWhite"  (click)="goBack()">Back</button>
+    </ion-col>
+<ion-col style="padding: 0;">
+ <button  class="footerButtonDouble"  (click)="goNext()">Next</button>
+</ion-col>
+
+</ion-row>
+</ion-footer>

@@ -1,0 +1,13 @@
+page-care-registry-list {
+    .header-md::after, .tabs-md[tabsPlacement="top"] > .tabbar::after, .footer-md::before, .tabs-md[tabsPlacement="bottom"] > .tabbar::before{
+        content: none;
+    }
+
+    .swiper-slide{
+        font-size: 14px;
+    }
+}
+.text-input[disabled]
+{
+    opacity: 1;
+}

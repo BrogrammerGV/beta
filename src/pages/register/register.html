@@ -1,0 +1,29 @@
+
+      <div class="mainFont">
+          {{textCopy}}
+        </div>
+        <div>
+          <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+            <div style="text-align: left">
+              <ion-list no-lines>
+              <ion-item>
+                <ion-label stacked class="inputLabelText">First Name</ion-label>
+                <ion-input placeholder="Type here" required class="inputField" [(ngModel)]="userInfo.first" formControlName="firstName"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label stacked class="inputLabelText">Last Name</ion-label>
+                <ion-input placeholder="Type here" required class="inputField" [(ngModel)]="userInfo.last" formControlName="lastName"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label stacked class="inputLabelText">Email</ion-label>
+                <ion-input type="email" required placeholder="login@example.com" class="inputField" [(ngModel)]="userInfo.email" formControlName="email"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label stacked class="inputLabelText">Password</ion-label>
+                <ion-input type="password" required placeholder="Type here" class="inputField" [(ngModel)]="userInfo.password" formControlName="password"></ion-input>
+              </ion-item>
+            </ion-list>
+            </div>
+            <div (click)="login()" class="blueRightText">Already have an account?</div>
+          </form>
+        </div>

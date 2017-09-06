@@ -1,0 +1,47 @@
+page-service-remains {
+ .inputField {
+         
+          background: #FFFFFF;
+          border: 2px solid #33475C;
+          border-radius: 1.5px;
+        height: 50px;
+
+          
+    }
+
+    .centAlign
+    {
+        padding-right: 10%;
+        padding-left: 10%;
+    }
+    .centAlignHeader
+    {
+        padding-right: 5%;
+        padding-left: 5%;
+    }
+
+    ::-webkit-input-placeholder {
+        font-size: 12px;
+        color: #33475C;
+        text-align: left;
+       }
+       :-moz-placeholder { /* older Firefox*/
+        font-size: 12px;
+        color: #33475C;
+        text-align: left;
+       }
+       ::-moz-placeholder { /* Firefox 19+ */ 
+        font-size: 12px;
+        color: #33475C;
+        text-align: left;
+       } 
+       :-ms-input-placeholder { 
+        font-size: 12px;
+        color: #33475C;
+        text-align: left;
+       }
+
+    .inputLabelText{
+         color: #33475C; 
+    }
+}

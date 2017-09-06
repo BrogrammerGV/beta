@@ -1,0 +1,70 @@
+<ion-header>
+  <div class="headerBarBump"></div>
+  <div class="customHeaderClass">
+    <img src="assets/img/menu.png" class="menuIcon" /> PostScript
+  </div>
+</ion-header>
+
+
+
+
+
+<ion-content class="outer-content">
+   <!-- <div class="about-header headerTitle"> -->
+  
+      <!-- <h4 class="slide-in-top"> Click on the categories below to tell us about your loved one. </h4> -->
+     <!-- <img class="logo heartbounce" src="assets/img/one.png" alt="ionic logo">-->
+  <!-- </div> -->
+  <div class="center">
+<p>  Understanding your loved one </p>
+<div id="myProgress">
+  <div style="width: 15%;"  id="myBar"></div>
+</div>
+</div>
+<br />
+<div class="bgCard">
+<br />
+    <ion-row >
+    <h2>  <b>Tell us more about <span class="friendlyName">{{friendlyName}}'s</span> final days.</b> </h2>
+   </ion-row>
+
+
+  <ion-list no-lines>
+     <ion-item>
+        
+
+         <ion-label stacked class="inputLabelText"> Date of Death</ion-label>
+    <ion-datetime placeholder="00/00/0000" class="inputField" [(ngModel)]="dateOfDeath" displayFormat="MMMM DD, YYYY"></ion-datetime>
+  </ion-item>
+ <ion-item>
+        <ion-label stacked class="inputLabelText"> Place of Death</ion-label>
+          <ion-input placeholder="Address" class="inputField" [(ngModel)]="locOfDeathOne"></ion-input>
+          
+        </ion-item>
+      
+         <ion-item>
+         <ion-label stacked class="inputLabelText"></ion-label>
+           <ion-input placeholder="City, State" class="inputField" [(ngModel)]="locOfDeathTwo"></ion-input>
+          </ion-item>
+
+
+
+
+<br />
+<br />
+</ion-list>
+</div>
+
+
+</ion-content>
+<ion-footer>
+  <ion-row>
+    <ion-col style="padding: 0;">
+         <button  class="footerButtonWhite"  (click)="goBack()">Back</button>
+    </ion-col>
+<ion-col style="padding: 0;">
+ <button  class="footerButtonDouble"  (click)="goNext()">Next</button>
+</ion-col>
+
+</ion-row>
+</ion-footer>

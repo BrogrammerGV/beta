@@ -1,0 +1,84 @@
+<ion-header>
+  <div class="headerBarBump"></div>
+  <div class="customHeaderClass">
+    <img src="assets/img/menu.png" class="menuIcon" /> PostScript
+  </div>
+</ion-header>
+
+<ion-content class="outer-content">
+   <!-- <div class="about-header headerTitle"> -->
+  
+      <!-- <h4 class="slide-in-top"> Click on the categories below to tell us about your loved one. </h4> -->
+     <!-- <img class="logo heartbounce" src="assets/img/one.png" alt="ionic logo">-->
+  <!-- </div> -->
+  <div class="center">
+<p>  Understanding your loved one </p>
+<div id="myProgress">
+  <div style="width: 65%;"  id="myBar"></div>
+</div>
+</div>
+<br />
+<div style="padding-bottom: 10%;" class="bgCard">
+  <br />
+ 
+<div style="margin-top: -10px;" class="center">
+
+ <h2>  <b>Tell us about <span class="friendlyName">{{friendlyName}}'s</span> family.</b> </h2>
+
+      
+    </div>
+
+
+
+   <ion-list no-lines>
+<ion-label style="margin-bottom: 5%; margin-left: 7%;" stacked class="inputLabelText">Marital Status</ion-label>
+<div class="center">
+
+<button  [ngClass]="{
+            'footerButtonWhite' : !singleDialog,
+            'footerButton' : singleDialog
+          }" 
+(click)="showSingle()" class="marButton"><b>Single</b></button>
+
+<button  [ngClass]="{
+            'footerButtonWhite' : !marriedDialog,
+            'footerButton' : marriedDialog
+          }" 
+(click)="showMarried()" class="marButton"><b>Married</b></button>
+
+
+
+<button  [ngClass]="{
+            'footerButtonWhite' : !divorcedDialog,
+            'footerButton' : divorcedDialog
+          }" 
+(click)="showDivorced()" class="marButton"><b>Divorced</b></button>
+
+<button  [ngClass]="{
+            'footerButtonWhite' : !widowedDialog,
+            'footerButton' : widowedDialog
+          }" 
+(click)="showWidowed()" class="marButton"><b>Widowed</b></button>
+
+
+ </div>
+
+ </ion-list>
+
+</div>
+
+
+
+</ion-content>
+
+<ion-footer>
+  <ion-row>
+    <ion-col style="padding: 0;">
+         <button  class="footerButtonWhite"  (click)="goBack()">Back</button>
+    </ion-col>
+<ion-col style="padding: 0;">
+ <button  class="footerButtonDouble"  (click)="goNext()">Next</button>
+</ion-col>
+
+</ion-row>
+</ion-footer>

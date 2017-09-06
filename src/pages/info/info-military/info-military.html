@@ -1,0 +1,81 @@
+<ion-header>
+  <div class="headerBarBump"></div>
+  <div class="customHeaderClass">
+    <img src="assets/img/menu.png" class="menuIcon" /> PostScript
+  </div>
+</ion-header>
+
+
+
+
+
+<ion-content class="outer-content">
+   <!-- <div class="about-header headerTitle"> -->
+  
+      <!-- <h4 class="slide-in-top"> Click on the categories below to tell us about your loved one. </h4> -->
+     <!-- <img class="logo heartbounce" src="assets/img/one.png" alt="ionic logo">-->
+  <!-- </div> -->
+  <div class="center">
+<p>  Understanding your loved one </p>
+<div id="myProgress">
+  <div style="width: 20%;"id="myBar"></div>
+</div>
+</div>
+<br />
+<div style="padding-bottom: 10%;" class="bgCard">
+  <br />
+   <br />
+<br /><div class="center">
+
+ <h2>  <b>Did <span class="friendlyName">{{friendlyName}}</span> serve in the military?</b> </h2>
+
+      
+    </div>
+
+
+
+   <ion-list no-lines>
+
+<ion-row>
+<ion-col><button [ngClass]="{
+            'footerButtonWhite' : !showDialog,
+            'footerButton' : showDialog
+          }" 
+(click)="showHistory()">Yes</button>
+  </ion-col>
+  <ion-col> <button (click)="goSkip()" class="footerButtonWhite" >No</button>
+  </ion-col>
+</ion-row>
+
+
+
+<div *ngIf="showDialog">
+  <div class="center">
+
+ <h2>  <b>Briefly describe <span class="friendlyName"> {{friendlyName}}'s</span> service, branch served and notable accomplishments.</b> </h2></div>
+     <ion-item class="item-text-wrap">
+         <ion-label stacked class="inputLabelText">Military History</ion-label>
+           <ion-input class="item-text-wrap" style="padding-bottom: 15%;" placeholder="Type Here" class="inputField" [(ngModel)]="militaryInfo"></ion-input>
+          </ion-item>
+
+</div>
+
+ </ion-list>
+
+</div>
+
+
+
+</ion-content>
+
+<ion-footer>
+  <ion-row>
+    <ion-col style="padding: 0;">
+         <button  class="footerButtonWhite"  (click)="goBack()">Back</button>
+    </ion-col>
+<ion-col style="padding: 0;">
+ <button  class="footerButtonDouble"  (click)="goNext()">Next</button>
+</ion-col>
+
+</ion-row>
+</ion-footer>

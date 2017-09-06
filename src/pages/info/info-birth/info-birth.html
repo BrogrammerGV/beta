@@ -1,0 +1,74 @@
+<ion-header>
+  <div class="headerBarBump"></div>
+  <div class="customHeaderClass">
+    <img src="assets/img/menu.png" class="menuIcon" /> PostScript
+  </div>
+</ion-header>
+
+
+<ion-content class="outer-content">
+   <!-- <div class="about-header headerTitle"> -->
+  
+      <!-- <h4 class="slide-in-top"> Click on the categories below to tell us about your loved one. </h4> -->
+     <!-- <img class="logo heartbounce" src="assets/img/one.png" alt="ionic logo">-->
+  <!-- </div> -->
+  <div class="center">
+<p>  Understanding your loved one </p>
+<div  id="myProgress">
+  <div style="width: 15%;" id="myBar"></div>
+</div>
+</div>
+<br />
+<div class="bgCard">
+<br />
+    <ion-row >
+    <h2>  <b>Tell us more about <span class="friendlyName">{{friendlyName}}'s</span> birth.</b> </h2>
+   </ion-row>
+
+
+  <ion-list no-lines>
+   
+    <ion-item>
+         <ion-label stacked class="inputLabelText"> Date of Birth</ion-label>
+    <ion-datetime placeholder="00/00/0000" class="inputField" [(ngModel)]="dateOfBirth" displayFormat="MMMM DD, YYYY"></ion-datetime>
+  </ion-item>
+ <ion-item>
+        <ion-label stacked class="inputLabelText"> Place of Birth</ion-label>
+          <ion-input placeholder="City, State" class="inputField" [(ngModel)]="locOfBirth"></ion-input>
+        </ion-item>
+      
+      <ion-item>
+     
+        <ion-label stacked class="inputLabelText"> Gender</ion-label>
+        <ion-select placeholder="Gender" class="inputField" [(ngModel)]="gender">
+          <ion-option value="m">Male</ion-option>
+          <ion-option value="f">Female</ion-option>
+        </ion-select>
+         </ion-item>
+      
+         <ion-item>
+        <ion-label stacked class="inputLabelText"> Social Security Number </ion-label>
+          <ion-input  mask="***-**-****" placeholder="000-00-0000" class="inputField" [(ngModel)]="decSSN"></ion-input>
+          </ion-item>
+<span (click)="openSSNModal()" class="whyModal" >Why do we need this? </span>
+
+
+<br />
+<br />
+</ion-list>
+</div>
+
+
+
+</ion-content>
+<ion-footer>
+  <ion-row>
+    <ion-col style="padding: 0;">
+         <button  class="footerButtonWhite"  (click)="goBack()">Back</button>
+    </ion-col>
+<ion-col style="padding: 0;">
+ <button  class="footerButtonDouble"  (click)="goNext()">Next</button>
+</ion-col>
+
+</ion-row>
+</ion-footer>

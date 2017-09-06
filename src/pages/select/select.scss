@@ -1,0 +1,382 @@
+
+.checkmark
+{
+  font-size: 100px;
+     display: table;
+  margin: auto auto;
+}
+.headerTitle
+{
+background: #ffffff;
+}
+.center
+{
+  text-align: center;
+}
+
+.btext
+{
+  padding: 25px;
+  margin: 0 auto;
+}
+
+
+@keyframes slideIn {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 0;
+  }
+}
+
+
+
+//Cole's CustomTransitions
+@keyframes slideinLeft {
+  0% {
+    -webkit-transform: translate3d(-100%,0,0);
+  }
+  100% {
+    -webkit-transform: translate3d(0,0,0);
+  }
+}
+
+
+.slide-in-left{
+   -webkit-animation: slideinLeft ease-in 1; 
+  animation: slideinLeft ease-in 1;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-duration: 750ms;
+  animation-duration: 750ms;
+}
+
+@keyframes topFade {
+  0% {
+    -webkit-transform: translate3d(0,0,100%);
+  }
+  100% {
+    -webkit-transform: translate3d(0,0,0);
+  }
+}
+
+
+.topFade{
+   -webkit-animation: topFade ease-in 1; 
+  animation: topFade ease-in 1;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-duration: 750ms;
+  animation-duration: 750ms;
+}
+
+
+
+
+@keyframes slideInRight{
+  0% {
+    -webkit-transform: translate3d(100%,0,0);
+  }
+  100% {
+    -webkit-transform: translate3d(0,0,0);
+  }
+}
+
+
+.slide-in-right{
+   -webkit-animation: slideInRight ease-in 1; 
+  animation: slideInRight ease-in 1;
+  -webkit-animation-fill-mode: backwards;
+  animation-fill-mode: backwards;
+  -webkit-animation-duration: 750ms;
+  animation-duration: 750ms;
+}
+
+@keyframes slideinTop{
+  0% {
+    -webkit-transform: translate3d(100%,0,0);
+  }
+  100% {
+    -webkit-transform: translate3d(0,0,0);
+  }
+}
+
+
+.slide-in-top{
+   -webkit-animation: slideInTop ease-in 1; 
+  animation: slideInTop ease-in 1;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-duration: 750ms;
+  animation-duration: 750ms;
+}
+
+
+.heartbounce {
+  animation: bounce 1s infinite alternate;
+  -webkit-animation: bounce 1s infinite alternate;
+}
+@keyframes bounce {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-15px);
+  }
+}
+@-webkit-keyframes bounce {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-15px);
+  }
+}
+
+
+
+
+//End of Cole's Custom Transitions
+
+
+.button-pad
+{
+
+margin:auto;
+}
+
+.logo {
+  margin: auto;
+  height: 25%;
+  width: 25%;
+  color: orange;
+}
+
+
+.purp {
+    background-color: red;
+    -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 40s; /* Safari 4.0 - 8.0 */
+    animation-name: example;
+    animation-duration: 40s;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes example {
+    0%   {background-color: red;}
+    25%  {background-color: yellow;}
+    50%  {background-color: blue;}
+    100% {background-color: green;}
+}
+
+/* Standard syntax */
+@keyframes example {
+    0%   {background-color: red;}
+    25%  {background-color: yellow;}
+    50%  {background-color: blue;}
+    100% {background-color: green;}
+}
+
+
+.fixed-content{
+          opacity: 0.22 !important;
+background-image: linear-gradient(-180deg, #B3D6F3 0%, #7CADE4 100%) !important;
+    }
+
+
+
+    
+
+
+
+
+.whiteButton
+{
+  /* Rectangle 28: */
+background: #FFFFFF;
+border: 4px solid #33475C;
+border-radius: 2px;
+color: #4A4A4A;
+
+}
+
+
+
+
+
+.tileOne {
+width: 100% ;
+
+padding: 45% 0 60% 0 !important;
+margin:auto;
+background: url('../assets/img/info/Tile.png') 60% 80% no-repeat ;
+}
+
+
+.tileTwo {
+width: 100% ;
+
+padding: 45% 0 60% 0 !important;
+margin:auto;
+background: url('../assets/img/info/tile2.png') 50% 60% no-repeat ;
+}
+
+
+.tileThree {
+width: 100% ;
+
+padding: 45% 0 60% 0 !important;
+margin:auto;
+background: url('../assets/img/info/tileThree.png') 50% 60% no-repeat ;
+}
+
+
+.tileFour {
+width: 100% ;
+
+padding: 45% 0 60% 0 !important;
+margin:auto;
+background: url('../assets/img/info/tileFour.png') 60% 80% no-repeat ;
+}
+
+
+
+
+//Care Registry Custom Tiles
+
+.tileCareOne {
+
+
+padding: 45% 0 60% 0 !important;
+margin:auto;
+background: url('../assets/img/care/meals.png') 60% 80% no-repeat ;
+background-size: 100%;
+background-size:cover
+
+
+
+}
+
+
+.tileCareTwo {
+
+
+padding: 45% 0 60% 0 !important;
+margin:auto;
+background: url('../assets/img/care/transport.png') 50% 60% no-repeat ;
+  background-size: 100%;
+  background-size:cover
+}
+
+
+.tileCareThree {
+
+padding: 45% 0 60% 0 !important;
+margin:auto;
+background: url('../assets/img/care/houseitem.png') 50% 60% no-repeat ;
+  background-size: 100%;
+  background-size:cover
+}
+
+
+.tileCareFour {
+
+
+padding: 45% 0 60% 0 !important;
+margin:auto;
+background: url('../assets/img/care/support.png') 60% 80% no-repeat ;
+  background-size: 100%;
+  background-size:cover
+}
+
+
+
+
+
+
+
+
+.tileText
+{
+  position: relative;
+  top: -20px;
+  left: -0px;
+  text-align:left;
+}
+.tileTextAbout
+{
+  position: relative;
+  top: -35px;
+  left: -25px;
+  text-align:left;
+}
+.tileTextWork
+{
+  position: relative;
+  top: -20px;
+  left: 2px;
+  text-align:left;
+}
+.tileTextLife
+{
+  position: relative;
+  top: -30px;
+  left: -15px;
+  text-align:left;
+}
+
+
+
+.tileTextMeals
+{
+  position: relative;
+  top: -2.5em ;
+padding-left: 4px;
+
+
+}
+.tileTextTransport
+{
+  position: relative;
+ top: -2.5em;
+ padding-left: 4px;
+  text-align:left;
+}
+.tileTextHouseItem
+{
+  position: relative;
+  top: -2.0em;
+ padding-left: 4px;
+  text-align:left;
+}
+.tileTextSupport
+{
+  position: relative;
+  top: -2.0em;
+ padding-left: 4px;
+  text-align:left;
+}
+
+
+
+
+.centAlign 
+{ 
+width: 85%;
+  margin:auto;
+}
+
+
+.centAlignCare 
+{ 
+width: 86%;
+  margin:auto;
+  margin-top: 2%;
+}
+
+
+.checkOver
+{
+color: #ffffff;
+}

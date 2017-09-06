@@ -1,0 +1,79 @@
+<ion-header>
+  <div class="headerBarBumpTwo"></div>
+  <div class="customEventMedHeaderClass">
+
+    
+  
+<div  class="frontLayer">
+
+<!--Start of Custom Tab Header: CJM -->
+
+                <div  class="date headerOverride">
+                    <span class="eventHeaderMonth"><b> {{eventMonth}}</b></span> 
+                    <span class="eventHeaderDate"> <b>{{eventDate}}</b> </span>
+                    </div>
+                            <div class="eventHeaderMainText">
+                                <img  src="assets/img/menu.png" class="menuIcon" />
+                                  <span class="em08"> Remebering</span>
+                              <br />
+                                  <span class="em1"> <b>{{nameToUse}}</b> </span>
+                              <br />     
+                                  <span class="em08"> {{funeralHome}}</span>
+                              <br /> 
+                                  <span class="em08"> {{eventTime}} | {{eventMonth}}. {{eventDate}}</span>
+                  </div>
+
+
+                <div class="row eventTabsMain">
+                    
+                    <div (click)="goToEvents()" class="col">
+                        <ion-icon class="eventTabs" ios="ios-calendar-outline" md="md-calendar">
+                          <div>
+                        Event
+                        </div>
+                        </ion-icon>
+                    
+                    </div>
+                    
+                      <div (click)="goToCare()"  class="col ml10">
+                      <ion-icon  class="eventTabs" name="heart-outline">
+                        <div >
+                        Registry of <br /> Care
+                        </div>
+                      </ion-icon>
+                      
+                    </div>
+                    
+                    <div (click)="goToFeed()" class="col ml10 tabSelected">
+                      <ion-icon class="eventTabs" ios="ios-paper-outline" md="md-paper">
+                    <div>
+                        Condolence <br /> Feed 
+                        </div>
+                      </ion-icon>
+                      
+                    
+                    </div>
+                    
+                    </div>
+
+
+
+                </div>
+
+                  </div>
+
+<!--End of Custom Tab Header: CJM -->
+</ion-header>
+
+
+<ion-content>
+
+
+
+
+
+
+
+
+</ion-content>
+

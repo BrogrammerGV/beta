@@ -1,0 +1,210 @@
+<ion-header>
+  <div class="headerBarBumpTwo"></div>
+  <div class="customEventMedHeaderClass">
+
+    
+  
+<div  class="frontLayer">
+
+<!--Start of Custom Tab Header: CJM -->
+
+
+
+
+<div  class="date headerOverride">
+    <span class="eventHeaderMonth"><b> {{eventMonth}}</b></span> 
+    <span class="eventHeaderDate"> <b>{{eventDate}}</b> </span>
+    </div>
+            <div class="eventHeaderMainText">
+                <img  src="assets/img/menu.png" class="menuIcon" />
+                  <span class="em08"> Remebering</span>
+              <br />
+                  <span class="em1"> <b>{{nameToUse}}</b> </span>
+              <br />     
+                  <span class="em08"> {{funeralHome}}</span>
+              <br /> 
+                  <span class="em08"> {{eventTime}} | {{eventMonth}}. {{eventDate}}</span>
+   </div>
+
+
+
+<div class="row eventTabsMain">
+    
+    <div (click)="goToEvents()" class="col tabSelected">
+        <ion-icon class="eventTabs" ios="ios-calendar-outline" md="md-calendar">
+          <div>
+        Event
+        </div>
+        </ion-icon>
+     
+    </div>
+    
+      <div (click)="goToCare()"  class="col ml10">
+      <ion-icon  class="eventTabs" name="heart-outline">
+        <div >
+        Registry of <br /> Care
+        </div>
+      </ion-icon>
+      
+    </div>
+    
+    <div (click)="goToFeed()" class="col ml10">
+      <ion-icon class="eventTabs" ios="ios-paper-outline" md="md-paper">
+    <div>
+        Condolence <br /> Feed 
+        </div>
+      </ion-icon>
+      
+    
+    </div>
+    
+    </div>
+
+
+</div>
+
+  </div>
+<!--End of Custom Tab Header: CJM -->
+
+</ion-header>
+
+
+<ion-content>
+
+
+
+  <div *ngIf="!showEditScreen && !showShareScreen" class="bgPane" style="padding-bottom: 30%;">
+<br />
+
+<div style="margin-left: 5%; margin-right: 5%; -text-align:left;">
+<div style="float: right;">
+      <!-- <ion-icon (click)="swapScreen()" style="color: #B2BAC4; font-size: 2.3em;" name="create"> -->
+          <img (click)="swapScreen()"  height="25px;" width="25px;" src="assets/img/pencil.svg" />
+    <!-- </ion-icon> -->
+  </div>
+
+    <div style="font-size: 1.3em;"> <i style="padding-bottom: 10px; color: #686C71">{{helperText}}</i></div>
+ <br /> 
+     <span style="font-size: 1.2em;color: #686C71">{{helperText2}}</span>
+
+</div>
+<br />
+
+<div  class="scheduleList">
+    <span > <b>Schedule of Events</b></span>
+ <ul>
+   <li >
+    <span> <b> 8/23 7 p.m. </b>| Private Family Viewing</span></li>
+  <li >
+    <span> <b> 8/24 4-8 p.m. </b>| Public Visitation</span></li>
+
+    <li ><span > <b> 8/25 10:30 a.m.. </b>| Funeral Service, Internment and Luncheon to Follow</span></li>
+</ul>
+
+</div>
+<div class="center">
+ <button style="width: 50%;" class="orangeSwitchButton" (click)="swapShare()"> Share</button>
+ </div>
+</div>
+
+<!--Event Edit Page-->
+  <div *ngIf="showEditScreen" class="bgPane" style="padding-bottom: 30%;">
+<br />
+<div class="center">
+  <h2> <b>Customize Your <br /> Message Below </b></h2>
+</div>
+
+
+<ion-list style="margin-right: 2%;" no-lines>
+     <ion-item>
+         <ion-label stacked class="inputLabelText">Greeting</ion-label>
+           <ion-input  class="inputField" [(ngModel)]="greetingText"></ion-input>
+          </ion-item>
+
+   
+         <ion-label style="margin-left:5%;" stacked class="inputLabelText">Message</ion-label>
+           
+  
+</ion-list>
+
+<textarea style="margin-left: 5%; 
+margin-top:-5%;
+ margin-bottom: 4%; padding-bottom:
+ 20% !important; width: 90%; border: solid 2px #33475c;" [(ngModel)]="messageText"></textarea>
+<br />
+
+<ion-footer>
+  <ion-row>
+    <ion-col style="padding: 0;">
+         <button  class="footerButtonWhite"  (click)="removeEditScreen()">Back</button>
+    </ion-col>
+<ion-col style="padding: 0;">
+ <button  class="footerButtonDouble"  (click)="saveEditText()">Save Changes</button>
+</ion-col>
+
+</ion-row>
+
+</ion-footer>
+</div>
+<!--Event Edit Page-->
+
+
+
+<!-- Event Share Page-->
+<div *ngIf="showShareScreen" class="bgPane" style="padding-bottom: 30%;">
+<br />
+<div class="center" style="margin-right: 5%; margin-left: 5%;" [ngClass]="{'hideAnimation' : buttonClicked}">
+      <div class="mainFont">How would you like to send the event details?</div>
+      <hr class="horizontalBreak" style="height: 2px" />
+
+    </div>
+    <div class="center">
+    <button style="width: 30%;" [ngClass]="{
+            'whiteButton' : !textClicked,
+            'orangeButton' : textClicked
+          }" (click)="showText()"><b>Text</b></button>
+    <button style="width: 30%;"  [ngClass]="{
+            'whiteButton' : !emailClicked,
+            'orangeButton' : emailClicked
+          }" (click)="showEmail()"><b>Email</b></button>
+    <button style="width: 30%;" [ngClass]="{
+            'whiteButton' : !facebookClicked,
+            'orangeButton' : facebookClicked
+          }" (click)="showFacebook()"><b>Facebook</b></button>
+
+
+
+
+<ion-list style="margin-right: 2%; margin-top: 5%;" no-lines>
+     <ion-item *ngIf="emailClicked">
+         <ion-label stacked class="inputLabelText">Please enter email address(es) below:</ion-label>
+           <ion-input  class="inputField" placeholder="invitation@example.com, invitation2@example2.com ..." [(ngModel)]="emailAddressSendInvite"></ion-input>
+          </ion-item>
+</ion-list>
+
+
+
+    </div>
+
+
+
+
+<ion-footer>
+  <ion-row>
+    <ion-col style="padding: 0;">
+         <button  class="footerButtonWhite"  (click)="removeShareScreen()">Back</button>
+    </ion-col>
+<ion-col style="padding: 0;">
+ <button  class="footerButtonDouble"  (click)="sendShareAny()">Next</button>
+</ion-col>
+
+</ion-row>
+
+</ion-footer>
+</div>
+<!--Event Shre Page -->
+
+
+
+</ion-content>
+

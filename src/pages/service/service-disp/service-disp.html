@@ -1,0 +1,137 @@
+<ion-header>
+  <div class="headerBarBump"></div>
+  <div class="customHeaderClass">
+    <img src="assets/img/menu.png" class="menuIcon" /> PostScript
+  </div>
+</ion-header>
+
+
+
+<ion-content class="outer-content">
+   <!-- <div class="about-header headerTitle"> -->
+  
+      <!-- <h4 class="slide-in-top"> Click on the categories below to tell us about your loved one. </h4> -->
+     <!-- <img class="logo heartbounce" src="assets/img/one.png" alt="ionic logo">-->
+  <!-- </div> -->
+  <div class="center">
+<p>  Understanding your loved one </p>
+<div id="myProgress">
+  <div style="width: 85%;"  id="myBar"></div>
+</div>
+</div>
+<br />
+<div style="padding-bottom: 10%;" class="bgCard">
+  <br />
+ 
+
+<div *ngIf="!showPhaseTwo" style="margin-top: -10px;" class="center">
+
+ <h2>  <b>What type of service would you like to plan for <span class="friendlyName">{{friendlyName}}</span>?</b> </h2>
+
+      
+    </div>
+
+
+
+   <ion-list *ngIf="!showPhaseTwo" no-lines>
+<div class="center">
+
+<button  [ngClass]="{
+            'footerButtonWhite' : !privateDialog,
+            'orangeSwitchButton' : privateDialog
+          }" 
+(click)="showPrivate()" class="marButton"><b>Private Service</b></button>
+
+<button  [ngClass]="{
+            'footerButtonWhite' : !publicDialog,
+            'orangeSwitchButton' : publicDialog
+          }" 
+(click)="showPublic()" class="marButton"><b>Public Service</b></button>
+
+
+
+<button  [ngClass]="{
+            'footerButtonWhite' : !bothDialog,
+            'orangeSwitchButton' : bothDialog
+          }" 
+(click)="showBoth()" class="marButton"><b>Both</b></button>
+
+<button  [ngClass]="{
+            'footerButtonWhite' : !neitherDialog,
+            'orangeSwitchButton' : neitherDialog
+          }" 
+(click)="showNeither()" class="marButton"><b>Neither</b></button>
+
+
+ </div>
+
+ </ion-list>
+
+
+
+
+
+ <div *ngIf="showPhaseTwo" style="margin-top: -10px;" class="center">
+
+ <h2>  <b>Where would you like to hold services for <span class="friendlyName">{{friendlyName}}</span>?</b> </h2>
+
+      
+    </div>
+
+
+
+   <ion-list *ngIf="showPhaseTwo" no-lines>
+<div class="center">
+
+<button  [ngClass]="{
+            'footerButtonWhite' : !fhDialog,
+            'orangeSwitchButton' : fhDialog
+          }" 
+(click)="showFH()" class="marButton"><b>Funeral Home</b></button>
+
+<button  [ngClass]="{
+            'footerButtonWhite' : !graveDialog,
+            'orangeSwitchButton' : graveDialog
+          }" 
+(click)="showGrave()" class="marButton"><b>Graveside</b></button>
+
+
+
+<button  [ngClass]="{
+            'footerButtonWhite' : !otherDialog,
+            'orangeSwitchButton' : otherDialog
+          }" 
+(click)="showOther()" class="marButton"><b>Other</b></button>
+
+
+<ion-item *ngIf="otherDialog">
+        <ion-label stacked>If other, please explain. </ion-label>
+          <ion-input  placeholder="Type here" class="inputField" [(ngModel)]="serviceLocationOther"></ion-input>
+    </ion-item>
+
+ </div>
+
+ </ion-list>
+
+
+
+
+
+<span (click)="openServiceModal()" class="whyModal2" >Tell me more about these options. </span>
+
+</div>
+
+
+
+</ion-content>
+<ion-footer>
+  <ion-row>
+    <ion-col style="padding: 0;">
+         <button  class="footerButtonWhite"  (click)="goBack()">Back</button>
+    </ion-col>
+<ion-col style="padding: 0;">
+ <button  class="footerButtonDouble"  (click)="goNext()">Next</button>
+</ion-col>
+
+</ion-row>
+</ion-footer>

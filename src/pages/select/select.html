@@ -1,0 +1,130 @@
+<ion-header>
+  <div class="headerBarBump"></div>
+  <div class="customHeaderClass">
+    <img src="assets/img/menu.png" class="menuIcon" /> PostScript
+  </div>
+</ion-header>
+
+<ion-content class="outer-content speaker-list">
+   <!-- <div class="about-header headerTitle"> -->
+  
+      <!-- <h4 class="slide-in-top"> Click on the categories below to tell us about your loved one. </h4> -->
+     <!-- <img class="logo heartbounce" src="assets/img/one.png" alt="ionic logo">-->
+  <!-- </div> -->
+  <div class="center">
+<p>  Understanding your loved one </p>
+<div id="myProgress">
+  <div *ngIf="readyButtonText != 'Continue' && !servicesFinished" style="width: 10%;" id="myBar"></div>
+  <div *ngIf="readyButtonText == 'Continue' && aboutFinished" style="width: 25%;" id="myBar"></div>
+  <div *ngIf="readyButtonText == 'Continue' && militaryFinished" style="width: 50%;" id="myBar"></div>
+  <div *ngIf="readyButtonText == 'Continue' && cultureFinished" style="width: 75%;" id="myBar"></div>
+  <div *ngIf="readyButtonText == 'Submit'" style="width: 100%;" id="myBar"></div>
+</div>
+</div>
+<br />
+<div class="bgCard">
+  <ion-grid> 
+
+
+
+    <ion-row *ngIf="readyButtonText != 'Continue' && !servicesFinished ">
+    <h2> <b>Tell us about your loved one.</b> </h2>
+  <p> The following screens will help you collect important information about your loved one. We will use these details to coordinate your event and file the necessary paperwork.</p>
+    </ion-row>
+
+    <ion-row *ngIf="readyButtonText == 'Continue' && aboutFinished">
+    <h2> <b>Education and Work Experience</b> </h2>
+  <p> Thank you for the information you've provided so far. In this section, we'll gather details about your loved one's education and work experience.</p>
+    </ion-row>
+
+
+        <ion-row *ngIf="readyButtonText == 'Continue' && militaryFinished">
+    <h2> <b>Culture and Life</b> </h2>
+  <p> Thank you for the information you've provided so far. In this section, we will gather details about your loved one's family life and cultural background.</p>
+    </ion-row>
+
+       <ion-row *ngIf="readyButtonText == 'Continue' && cultureFinished">
+    <h2> <b>Services and Memorials </b> </h2>
+  <p> Thank you for the information you've provided so far. In this section, we will learn how our staff can help honor and remember your loved one.</p>
+    </ion-row>
+
+      <ion-row *ngIf="readyButtonText == 'Submit'">
+    <h2> <b>All done!</b> </h2>
+  <p> Thank you for providing this information. At anytime you can revisit any of the sections below to update or change answers you have provided.</p>
+    </ion-row>
+
+    <div class="centAlign">
+  <ion-row >
+
+    <ion-col  col-6>
+<!--Logic Will Need Reworked for next Pages-->
+   <button (click)="goToAbout()" ion-button full class="tileOne">
+    
+     <h2  *ngIf="!servicesFinished && readyButtonText != 'Continue'" class="tileTextAbout">About</h2> 
+     <ion-icon style="font-size: 90px" *ngIf="readyButtonText == 'Continue' ||  servicesFinished" name="checkmark"> </ion-icon>
+     
+    
+     </button>
+
+    </ion-col>
+
+    <ion-col col-6>
+
+     <button  (click)="goToEdu()" ion-button full class="tileTwo">
+       <h2 *ngIf="!servicesFinished && (!militaryFinished  && !cultureFinished)" class="tileTextWork">Education<br />and Work <br />Experience</h2>
+       <ion-icon style="font-size: 90px" *ngIf="readyButtonText == 'Continue' && (militaryFinished || cultureFinished) || servicesFinished" name="checkmark"> </ion-icon>
+    </button>
+    
+    </ion-col>
+
+    
+  </ion-row>
+   <ion-row >
+    <ion-col col-6>
+
+
+   <button   (click)="goToCulture()" ion-button full class="tileThree">
+     <h2 *ngIf="!servicesFinished && (!cultureFinished || militaryFinished)"  class="tileTextLife"> Culture<br />and Life </h2> 
+      <ion-icon style="font-size: 90px" *ngIf="readyButtonText == 'Continue' && (!militaryFinished && cultureFinished) || servicesFinished" name="checkmark"> </ion-icon>
+     </button>
+    </ion-col>
+
+
+    <ion-col col-6>
+
+
+
+
+
+   <button   (click)="gotToServ()" ion-button full class="tileFour">
+     <h2 *ngIf="!servicesFinished"  class="tileText">Services<br />and<br /> Memorials </h2>
+      <ion-icon style="font-size: 90px" *ngIf="readyButtonText == 'Submit' || servicesFinished" name="checkmark"> </ion-icon>
+     </button>
+
+
+
+    </ion-col>
+  </ion-row>
+  </div>
+
+
+
+  </ion-grid>
+
+</div>
+
+
+
+</ion-content>
+
+<ion-footer>
+  <ion-row>
+    <ion-col style="padding: 0;">
+         <button  class="footerButtonWhite"  (click)="insertRecord()">Skip For Now</button>
+    </ion-col>
+<ion-col style="padding: 0;">
+ <button  class="footerButtonDouble"  (click)="goImReady()">{{readyButtonText}}</button>
+</ion-col>
+
+</ion-row>
+</ion-footer>

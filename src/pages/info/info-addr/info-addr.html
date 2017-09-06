@@ -1,0 +1,70 @@
+<ion-header>
+  <div class="headerBarBump"></div>
+  <div class="customHeaderClass">
+    <img src="assets/img/menu.png" class="menuIcon" /> PostScript
+  </div>
+</ion-header>
+
+
+
+
+<ion-content class="outer-content">
+   <!-- <div class="about-header headerTitle"> -->
+  
+      <!-- <h4 class="slide-in-top"> Click on the categories below to tell us about your loved one. </h4> -->
+     <!-- <img class="logo heartbounce" src="assets/img/one.png" alt="ionic logo">-->
+  <!-- </div> -->
+  <div class="center">
+<p>  Understanding your loved one </p>
+<div id="myProgress">
+  <div style="width: 15%;"  id="myBar"></div>
+</div>
+</div>
+<br />
+<div class="bgCard">
+<br />
+    <ion-row >
+    <h2>  <b>Where did <span class="friendlyName">{{friendlyName}}</span> live?</b> </h2>
+   </ion-row>
+
+
+
+   <ion-list no-lines>
+
+
+    <ion-item>
+        <ion-label stacked class="inputLabelText">Residence </ion-label>
+          <ion-input placeholder="Address" class="inputField" [(ngModel)]="resOne"></ion-input>
+    </ion-item>
+
+ <br />
+        <ion-item>
+          <ion-input placeholder="City, State" class="inputField" [(ngModel)]="resTwo"></ion-input>
+        </ion-item>
+  
+    
+
+     
+
+
+<br />
+<br />
+ </ion-list>
+
+</div>
+
+
+
+</ion-content>
+
+<ion-footer>
+  <ion-row>
+    <ion-col style="padding: 0;">
+         <button  class="footerButtonWhite"  (click)="goBack()">Back</button>
+    </ion-col>
+<ion-col style="padding: 0;">
+ <button  class="footerButtonDouble"  (click)="goNext()">Next</button>
+</ion-col>
+
+</ion-row>
+</ion-footer>

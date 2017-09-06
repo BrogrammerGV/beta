@@ -1,0 +1,75 @@
+<ion-header>
+  <div class="headerBarBump"></div>
+  <div class="customHeaderClass">
+    <img src="assets/img/menu.png" class="menuIcon" /> PostScript
+  </div>
+</ion-header>
+
+
+
+
+
+
+
+<ion-content class="outer-content">
+   <!-- <div class="about-header headerTitle"> -->
+  
+      <!-- <h4 class="slide-in-top"> Click on the categories below to tell us about your loved one. </h4> -->
+     <!-- <img class="logo heartbounce" src="assets/img/one.png" alt="ionic logo">-->
+  <!-- </div> -->
+  <div class="center">
+<p>  Understanding your loved one </p>
+<div id="myProgress">
+  <div style="width: 35%;" id="myBar"></div>
+</div>
+</div>
+<br />
+<div style="padding-bottom: 30%;" class="bgCard">
+  <br />
+   <br />
+<br />
+
+ <h2>  <b>Tell us about <span class="friendlyName">{{friendlyName}}'s</span> work experience, notable accomplishments and jobs, starting with the most recent.</b> </h2>
+
+      
+   
+
+
+
+   <ion-list no-lines>
+
+
+
+
+
+     <ion-item class="item-text-wrap">
+         <ion-label stacked class="inputLabelText">Work Experience</ion-label>
+           <ion-input class="item-text-wrap" style="padding-bottom: 15%;" placeholder="Type Here" class="inputField" [(ngModel)]="workInfo"></ion-input>
+          </ion-item>
+
+
+ 
+
+
+
+     
+
+
+ </ion-list>
+
+</div>
+
+
+
+</ion-content>
+<ion-footer>
+  <ion-row>
+    <ion-col style="padding: 0;">
+         <button  class="footerButtonWhite"  (click)="goBack()">Back</button>
+    </ion-col>
+<ion-col style="padding: 0;">
+ <button  class="footerButtonDouble"  (click)="goNext()">Next</button>
+</ion-col>
+
+</ion-row>
+</ion-footer>

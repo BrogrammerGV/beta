@@ -1,0 +1,137 @@
+<ion-header>
+  <div class="headerBarBumpTwo"></div>
+  <div  [ngClass]="{
+            'customEventLongHeaderClass' : !expandDialog,
+            'customEventLongHeaderClassTwo' : expandDialog
+          }" >
+
+   
+  
+<div class="frontLayer">
+
+<div  style="position:absolute; width: 30%; margin-left: -5px;" class="date">
+    <span style="font-size:1.2em; opacity: 1; margin-left: 15px; margin-bottom: -10px;letter-spacing: 0.1px;"><b> {{eventMonth}}</b></span> 
+    <span style="position: relative; top: -12px; opacity: 1;  margin-left: 15px;"> <b>{{eventDate}}</b> </span>
+    </div>
+
+<div style="margin-left: 30%; text-align:left;">
+
+  <img style="margin-top: -17%;" src="assets/img/menu.png" class="menuIcon" />
+
+    <span style="font-size: .8em; opacity: 1;"> Funeral Service for</span>
+<br />
+     <span style	="font-size: 1em; opacity: 1;"> <b>{{nameToUse}}</b> </span>
+<br />     
+    <span style=" font-size: .8em; opacity: 1;"> {{funeralHome}}</span>
+<br /> 
+    <span style="font-size: .8em; opacity: 1;"> {{eventTime}} | {{eventMonth}}. {{eventDate}}</span>
+
+</div>
+<br />
+
+
+
+<div style="margin-left: 5%; text-align:left;">
+
+    <span style="font-size: .8em; opacity: 1;"> <i>A Message from {{firstName}}'s Family</i></span>
+ <br /> 
+    <span style="font-size: .8em; opacity: 1;"> <b> Thank you for supporting our family during this difficult time. We appreciate your condolences and invite you to join us as we celelbrate {{nameToUse}}'s Life.</b></span>
+
+</div>
+
+<div *ngIf="expandDialog">
+<div  style="margin-left: 5%; margin-top: 6px; text-align:left;">
+    <span style="font-size: .8em; opacity: 1;"> <b>Schedule of Events</b></span>
+ <ul style="margin-top: -3px; list-style-type: square;">
+   <li style="color: #E6785A">
+    <span style="font-size: .8em; opacity: 1; color: #ffffff;"> <b> 8/23 7 p.m. </b>| Private Family Viewing</span></li>
+  <li style="color: #E6785A">
+    <span style="font-size: .8em; opacity: 1; color: #ffffff;"> <b> 8/24 4-8 p.m. </b>| Public Visitation</span></li>
+
+    <li style="color: #E6785A"><span style="font-size: .8em; opacity: 1; color: #ffffff;"> <b> 8/25 10:30 a.m.. </b>| Funeral Service, Internment and Luncheon to Follow</span></li>
+</ul>
+
+</div>
+<div class="center">
+<button (click)="calendarUpdate()"  style="width: 60%; margin-bottom: 3%;" class="footerButton"><b>Add Events to Calendar</b></button>
+
+<button  style="width: 60%; margin-bottom: 3%;"  class="footerButton"><b>Venue Information</b></button>
+</div>
+
+</div>
+
+<div (click)="expandHeader()" style="padding-bottom: 10px;" class="center">
+   <ion-icon *ngIf="expandDialog" name="arrow-up"></ion-icon>
+   <br />
+  <span  style="font-size: .8em; opacity: 1;"> 
+    
+    <i> {{expandText}} </i>
+  
+  </span>
+  
+  <br />
+  <ion-icon *ngIf="!expandDialog" name="arrow-down"></ion-icon>
+  <br />
+  </div>
+
+
+</div>
+
+
+  </div>
+
+
+</ion-header>
+
+
+
+  <ion-content  class="backgroundOver">
+  <div class="bgPane">
+  <!--<div class="center">
+
+      
+
+
+<div style="border-right: thick solid #ff0000; margin-left: -30px;" class="verticalLine">
+  <img style="height: 80px; " src="assets/img/feed.png" />
+</div>
+
+       <img style="height: 80px; " src="assets/img/care.png" />
+        <img style="height: 80px; " src="assets/img/Obiticon.png" />
+      </div>-->
+
+<br />
+<div style="margin-right: 8px; margin-left: 8px;border-bottom: thin solid #E6785A; width:70%; padding-bottom: 3px;" class="row">
+ <span style="font-size: 1.0em; color:#686C71"> A Life Worth Celebrating</span>
+
+  </div>
+  <div style="margin-right: 8px; margin-left: 8px; width:90%; padding-top: 3px; " class="row">
+ <span style="font-size: 1.0em; color:#686C71"> {{firstName}}, age 43 passed away on Sunday July, 9, 2017, at his home surrounded 
+   <a (click)="goToObit()" >...Read More
+      
+   </a>
+   </span>
+
+  </div>
+  <div style="float: right; margin-top: -10%; padding-right: 10px;">
+  <ion-icon (click)="goToObit()"  name="arrow-forward"></ion-icon>
+  </div>
+ <br />
+
+<div class="row">
+
+<div style="border-right: thin solid #E6785A; padding-right: 5%; padding-left:5%;" class="col">
+   <img style="height: 80px; " src="assets/img/feed.png" />
+</div>
+
+  <div style="border-right: thin solid #E6785A; margin-left: 10%; padding-right:5%; " class="col">
+    <img style="height: 80px; " src="assets/img/care.png" />
+</div>
+
+<div style="padding-left: 10%;" class="col">
+    <img (click)="goToObit()" style="height: 80px; " src="assets/img/Obiticon.png" />
+</div>
+</div>
+</div>
+
+  </ion-content>

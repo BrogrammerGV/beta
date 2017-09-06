@@ -1,0 +1,21 @@
+page-care-registry-first-time-modal {
+        background-color: rgba(79, 86, 92, 0.71);
+        ion-content{
+            position: absolute;
+            top: 20%;
+            bottom: 20%;
+            left: 30px;
+            right: 30px;
+            width: auto;
+            height: auto;    
+        /* Rectangle 28: */
+        background-color: #FFFFFF;
+        border-radius: 3px;
+        
+         box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.33);
+        }
+    .scroll-content{
+        display: flex !important;
+        align-items: center !important;
+    }
+}

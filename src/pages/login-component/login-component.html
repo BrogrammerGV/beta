@@ -1,0 +1,24 @@
+
+			<div style="margin: auto; margin-top: 2em" *ngIf="!confirm">
+          <div class="mainFont" style="text-align: center">Login using your email address and password.</div>
+    
+            <ion-item no-lines>
+              <ion-label stacked class="inputLabelText">Email Address</ion-label>
+              <ion-input placeholder="login@example.com" type="email" required class="inputField" [(ngModel)]="userName"></ion-input>
+            </ion-item>
+            <ion-item no-lines>
+              <ion-label stacked class="inputLabelText">Password</ion-label>
+              <ion-input placeholder="Type here" type="password" required class="inputField" [(ngModel)]="password"></ion-input>
+            </ion-item>
+            <div (click)="forgotPassword()" class="blueRightText">Forgot password?</div>
+        </div>
+        <div style="margin: auto; margin-top: 2em" *ngIf="confirm">
+          <div class="mainFont" style="text-align: center">Please verify your account by entering the six-digit code from your confirmation email.</div>
+    
+            <ion-item no-lines>
+              <ion-label stacked class="inputLabelText">Verification Code</ion-label>
+              <ion-input placeholder="Type here" required class="inputField" [(ngModel)]="confirmationCode"></ion-input>
+            </ion-item>
+            <div (click)="resendConfirmation()" class="blueRightText">Resend Confirmation</div>
+        </div>
+      <br />

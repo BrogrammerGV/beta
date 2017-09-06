@@ -1,0 +1,95 @@
+<ion-header>
+  <div class="headerBarBump"></div>
+  <div class="customHeaderClass">
+    <img src="assets/img/menu.png" class="menuIcon" /> PostScript
+  </div>
+</ion-header>
+
+
+
+
+<ion-content class="outer-content">
+   <!-- <div class="about-header headerTitle"> -->
+  
+      <!-- <h4 class="slide-in-top"> Click on the categories below to tell us about your loved one. </h4> -->
+     <!-- <img class="logo heartbounce" src="assets/img/one.png" alt="ionic logo">-->
+  <!-- </div> -->
+  <div class="center">
+<p>  Understanding your loved one </p>
+<div id="myProgress">
+  <div style="width: 85%;"  id="myBar"></div>
+</div>
+</div>
+<br />
+<div style="padding-bottom: 10%;" class="bgCard">
+  <br />
+ 
+
+<div  style="margin-top: -10px;" >
+
+ <h2>  <b>Have you purchased a cemetery plot or columbarium niche for <span class="friendlyName">{{friendlyName}}?</span> </b> </h2>
+
+      
+    </div>
+
+
+
+   <ion-list *ngIf="!showPhaseTwo" no-lines>
+<div class="center">
+
+<ion-row>
+  <ion-col >
+<button style="width: 100%;" [ngClass]="{
+            'footerButtonWhite' : !yesDialog,
+            'orangeSwitchButton' : yesDialog
+          }" 
+(click)="showYes()" class="marButton"><b>Yes</b></button>
+
+  </ion-col>
+
+<ion-col>
+<button  style="width: 100%;"  [ngClass]="{
+            'footerButtonWhite' : !noDialog,
+            'orangeSwitchButton' : noDialog
+          }" 
+(click)="showNo()" class="marButton"><b>No</b></button>
+</ion-col>
+</ion-row>
+
+
+<div style="text-align: left;" *ngIf="yesDialog" style="margin-top: -10px;" >
+
+ <h2>  <b>Which cemetery helped with these arrangements? </b> </h2>
+
+      
+    </div>
+
+<ion-item *ngIf="yesDialog">
+       
+          <ion-input  placeholder="Type here" class="inputField" [(ngModel)]="cemeteryInfo"></ion-input>
+    </ion-item>
+ </div>
+
+ </ion-list>
+
+
+
+
+
+</div>
+
+
+
+</ion-content>
+
+<ion-footer>
+  <ion-row>
+    <ion-col style="padding: 0;">
+         <button  class="footerButtonWhite"  (click)="goBack()">Back</button>
+    </ion-col>
+<ion-col style="padding: 0;">
+ <button  class="footerButtonDouble"  (click)="goNext()">Next</button>
+</ion-col>
+
+</ion-row>
+</ion-footer>
