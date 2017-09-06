@@ -15,6 +15,12 @@ import { SocialSharing } from '@ionic-native/social-sharing';
 import { MyApp } from './app.component';
 
 //Custom Pages: CJM 08/03/2017
+//admin WebPage
+import { AdminLoginPage } from '../pages/admin/admin-login/admin-login';
+import { AdminManagerPage } from '../pages/admin/admin-manager/admin-manager';
+import { AdminAddPage } from '../pages/admin/admin-add/admin-add';
+
+
 import { EntryPage } from '../pages/entry/entry';
 import { SelectPage } from '../pages/select/select';
 import { TabsPage } from '../pages/tabs/tabs';
@@ -123,7 +129,10 @@ import { LoginPage } from '../pages/login/login';
      DatePicker,
     RegisterPage,
     LoginComponentPage, 
-    GlobalCarePage
+    GlobalCarePage,
+    AdminLoginPage, 
+    AdminManagerPage,
+    AdminAddPage
   ],
   imports: [
     BrowserModule,
@@ -182,7 +191,10 @@ import { LoginPage } from '../pages/login/login';
     RegisterPage,
     LoginComponentPage, 
     GlobalCarePage, 
-    LoginPage
+    LoginPage,
+    AdminLoginPage, 
+     AdminManagerPage, 
+     AdminAddPage
   ],
   providers: [
     StatusBar,
