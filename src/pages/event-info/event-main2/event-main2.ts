@@ -193,7 +193,8 @@ goBackParticipant()
     dataPass = {
       eventGuid: this.eventGuid,
       pageBool: "N",
-      careCategory: 'Meals'
+      careCategory: 'Meals',
+      firstName: this.firstName
     }
     this.storage.set('straightToAddItem', "N");
     this.careCategory = "Meals"
@@ -212,7 +213,8 @@ goBackParticipant()
     dataPass = {
       eventGuid: this.eventGuid,
       pageBool: "N",
-      careCategory: 'Transportation'
+      careCategory: 'Transportation',
+      firstName: this.firstName
     }
     this.storage.set('straightToAddItem', "N");
     this.careCategory = "Transportation"
@@ -227,7 +229,8 @@ goBackParticipant()
     dataPass = {
       eventGuid: this.eventGuid,
       pageBool: "N",
-      careCategory: 'Household'
+      careCategory: 'Household',
+      firstName: this.firstName
     }
     this.storage.set('straightToAddItem', "N");
     this.careCategory = "Household"
@@ -242,7 +245,8 @@ goBackParticipant()
     dataPass = {
       eventGuid: this.eventGuid,
       pageBool: "N",
-      careCategory: 'Misc'
+      careCategory: 'Misc',
+      firstName: this.firstName
     }
     this.storage.set('straightToAddItem', "N");
     this.careCategory = "Misc"

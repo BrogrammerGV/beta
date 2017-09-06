@@ -20,16 +20,16 @@
       <div *ngIf="!showAddItem && !showAddItemAll" class="cardStyle" style="position: absolute; top: 10px; left: 10px; right: 10px; bottom: 10px;">
         <div style="position: relative; width: 100%; height: 100%">
           <img src="assets/img/back.png" style="top:5px; left:0px; height: 1.5em; width: 1.5em; position: absolute; float: left" (click)="goBack()"
-            *ngIf="isPlanner" />
+            *ngIf="isPlanner === true" />
           <div style="overflow: auto; height: 100%; text-align: center; margin-left: 2em; margin-right: 0em; padding-right: 1em">
             <div style="text-align: center;" class="blueText mainFont">
               Available
             </div>
             <hr class="horizontalBreak" style="margin-top: 0.5em; margin-bottom: 0.5em;" />
-            <div class="subFont" style="font-size: 1em" *ngIf="noResultsAvailable && isPlanner">
+            <div class="subFont" style="font-size: 1em" *ngIf="noResultsAvailable && isPlanner === true">
               There isn't anything here yet, hit add item to request meals.
             </div>
-            <div class="subFont" style="font-size: 1em" *ngIf="noResultsAvailable && !isPlanner">
+            <div class="subFont" style="font-size: 1em" *ngIf="noResultsAvailable && isPlanner === false">
               There are no unclaimed items in this category. Care items may be available in other categories.
             </div>
             <div style="border-bottom: 1px solid; text-align: left; padding-bottom: 5px; margin-bottom: 0.7em" *ngFor="let availableItem of availableItems"
@@ -49,8 +49,8 @@
               <div style="border-bottom: 1px solid; text-align: left; padding-bottom: 5px; margin-bottom: 0.7em; opacity: 0.3" class="mainFont"
                 *ngFor="let claimedItem of claimedItems" (click)="openItem(claimedItem)">
                 <span>{{claimedItem.itemName.S}}
-                  <img src="assets/img/arrow.png" style="float: right; height: 1em; padding-top: 5px" *ngIf="isPlanner" />
-                  <img src="assets/img/checkmarkbox.png" style="float: right; height: 1.5em; padding-top: 5px" *ngIf="!isPlanner" /></span>
+                  <img src="assets/img/arrow.png" style="float: right; height: 1em; padding-top: 5px" *ngIf="isPlanner === true" />
+                  <img src="assets/img/checkmarkbox.png" style="float: right; height: 1.5em; padding-top: 5px" *ngIf="isPlanner === false" /></span>
                 <br/>
                 <span style="font-weight: normal; font-size: 0.7em">Claimed by {{claimedItem.claimedBy.S}}</span>
               </div>
@@ -64,7 +64,7 @@
       <div *ngIf="!showAddItem && !showAddItemAll" class="cardStyle" style="position: absolute; top: 10px; left: 10px; right: 10px; bottom: 10px;">
         <div style="position: relative; width: 100%; height: 100%">
           <img src="assets/img/back.png" style="top:5px; left:0px; height: 1.5em; width: 1.5em; position: absolute; float: left" (click)="moveSlides(0)"
-            *ngIf="isPlanner" />
+            *ngIf="isPlanner === true" />
           <div style="overflow: auto; height: 100%; text-align: center; margin-left: 1em; margin-right: 0em; padding-right: 1em" class="mainFont"
             *ngIf="event">
             <div class="blueText">
@@ -134,14 +134,30 @@
         </div>
     </ion-slide>
     <ion-slide>
-      Phone contact
-      <img src="assets/img/back.png" style="top:5px; left:0px; height: 1.5em; width: 1.5em; position: absolute; float: left" (click)="moveSlides(0)"
-        *ngIf="isPlanner" />
+      <div class="cardStyle" style="position: absolute; top: 10px; left: 10px; right: 10px; bottom: 10px;">
+          <div style="position: relative; width: 100%; height: 100%; display: flex; align-items: center">
+              <div style="width: 100%; margin-left: 20px; margin-right: 20px">
+                <div class="mainFont"><span class="blueText">{{deceasedFirst}}'s</span> family may want to contact you about this task if their plans or needs change.</div>
+                <hr class="horizontalBreak" />
+                <div class="subFont">What's the best phone number for them to use?</div>
+                <br />
+                <ion-input placeholder="000-000-0000" required class="inputField" [(ngModel)]="phoneNum"></ion-input>
+          </div>
+        </div>
+      </div>
     </ion-slide>
     <ion-slide>
-      Task accepted confirm
-      <img src="assets/img/back.png" style="top:5px; left:0px; height: 1.5em; width: 1.5em; position: absolute; float: left" (click)="moveSlides(0)"
-        *ngIf="isPlanner" />
+      <div class="cardStyle" style="position: absolute; top: 10px; left: 10px; right: 10px; bottom: 10px;">
+        <div style="position: relative; width: 100%; height: 100%; display: flex; align-items: center">
+          <div style="width: 100%; margin-left: 20px; margin-right: 20px">
+                <img src="assets/img/checkmark.png" class="welcomeImage" />
+                <br />
+                <div class="mainFont blueText">Thank you, {{userFirst}}.</div>
+                <br />
+                <div class="mainFont">By participating in the Care Registry, you are helping support {{deceasedFirst}}'s family during this difficult time.</div>
+              </div>
+          </div>
+        </div>
     </ion-slide>
   </ion-slides>
 
@@ -313,14 +329,14 @@
   <!-- Item list -->
   <ion-slides id="footerSlides" #footerSlides>
     <ion-slide>
-  <button class="footerButton" (click)="addItem()" *ngIf="isPlanner && !showAddItem && !showAddItemAll && !showConfirm">Add Item</button> 
-      <button class="footerButton" (click)="goBack()" *ngIf="!isPlanner">Back</button>
-      <button class="footerButton" (click)="addItem()" *ngIf="isPlanner && (showAddItem || showAddItemAll)">{{footerButtonText}}</button>
+  <button class="footerButton" (click)="addItem()" *ngIf="isPlanner === true && !showAddItem && !showAddItemAll && !showConfirm">Add Item</button> 
+      <button class="footerButton" (click)="goBack()" *ngIf="isPlanner === false">Back</button>
+      <button class="footerButton" (click)="addItem()" *ngIf="isPlanner === true && (showAddItem || showAddItemAll)">{{footerButtonText}}</button>
     </ion-slide>
     <ion-slide>
   <!-- Item detail -->
-    <button class="footerButton" (click)="secondaryButton()" *ngIf="isPlanner && !showAddItem && !showAddItemAll && !showConfirm">{{secondaryButtonText}}</button> 
-      <ion-row *ngIf="!isPlanner">
+    <button class="footerButton" (click)="secondaryButton()" *ngIf="isPlanner === true && !showAddItem && !showAddItemAll && !showConfirm">{{secondaryButtonText}}</button> 
+      <ion-row *ngIf="isPlanner === false">
         <ion-col style="padding: 0;">
           <button class="footerButtonWhite" (click)="moveSlides(0)">Back</button>
         </ion-col>
@@ -331,7 +347,7 @@
     </ion-slide>
     <ion-slide>
   <!-- Register -->
-      <ion-row *ngIf="!isPlanner">
+      <ion-row *ngIf="isPlanner === false">
         <ion-col style="padding: 0;">
           <button class="footerButtonWhite" (click)="moveSlides(1)">Back</button>
         </ion-col>
@@ -342,11 +358,11 @@
     </ion-slide>
     <ion-slide>
   <!-- Register Confirm -->
-        <button class="footerButton" (click)="moveSlides(5)" *ngIf="!isPlanner">Continue</button>
+        <button class="footerButton" (click)="moveSlides(5)" *ngIf="isPlanner === false">Continue</button>
     </ion-slide>
     <ion-slide>
   <!-- Login -->
-      <ion-row *ngIf="!isPlanner ">
+      <ion-row *ngIf="isPlanner === false ">
           <ion-col style="padding: 0;">
             <button class="footerButtonWhite" (click)="moveSlides(2); this.eventHandler.publish('loginBack')">Back</button>
           </ion-col>
@@ -354,6 +370,21 @@
             <button class="footerButtonDouble" (click)="this.eventHandler.publish('tryLogin');">Next</button>
           </ion-col>
         </ion-row>
+    </ion-slide>
+    <ion-slide>
+  <!-- Phone Number -->
+        <button class="footerButton" (click)="validatePhone()" *ngIf="isPlanner === false">Claim Task</button>
+    </ion-slide>
+    <ion-slide>
+  <!-- Confirmation Page -->
+      <ion-row *ngIf="isPlanner === false ">
+        <ion-col style="padding: 0;">
+          <button class="footerButtonWhite" (click)="this.navCtrl.pop();">Event Home</button>
+        </ion-col>
+        <ion-col style="padding: 0;">
+          <button class="footerButtonDouble" (click)="moveSlides(0);">Claim More Tasks</button>
+        </ion-col>
+      </ion-row>
     </ion-slide>
   </ion-slides>
 </ion-footer>
