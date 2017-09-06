@@ -275,7 +275,7 @@ async runEmailer()
     '&deceasedLast=' + this.deceasedLastName + 
     '&plannerFirst=' + this.plannerFirstName + 
     '&plannerLast=' + this.plannerLastName + '&token=6352f04d-34e6-4bf8-8cc9-63593f35a96e';
-    this.http.get(link).map(res => res.json()).subscribe(data => {
+    this.http.get(link).forEach(res => res.json()).then(data => {
 
       console.log("Email sent to "+  emailAdd)
 });

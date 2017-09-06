@@ -3,9 +3,13 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-
+import { Calendar } from '@ionic-native/calendar';
+import { CallNumber } from '@ionic-native/call-number';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
-import { DatePicker } from 'ionic2-date-picker/ionic2-date-picker';
+import { DatePicker } from 'ionic2-date-picker';
+import { IonicStorageModule } from '@ionic/storage';
+import { HttpModule } from '@angular/http';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 import { MyApp } from './app.component';
 
@@ -78,18 +82,18 @@ import { LoginComponentPage } from '../pages/login-component/login-component';
     InfoBirthPage, 
     InfoSsnModalPage, 
     InfoDeathPage, 
-    InfoAddrPage,
+    InfoAddrPage, 
     InfoMilitaryPage, 
     InfoHonorsPage, 
     InfoEduPage, 
     InfoWorkPage, 
     CultureSpousePage,
     CultureSpousecontPage, 
-    CultureParentsPage,
+    CultureParentsPage, 
     CultureFatherPage, 
     CultureRacePage,
     ServiceDispPage,
-    ServiceModalPage, 
+    ServiceModalPage,
     ServiceViewingPage,
     ServiceViewModalPage,
     ServiceRemainsPage,
@@ -105,7 +109,7 @@ import { LoginComponentPage } from '../pages/login-component/login-component';
     EventInfoOnePage,
     EventMainPage,
     Search2Page,
-    EventsPage, 
+    EventsPage,
     EventMainPage2,
     EventMainPage3, 
     CareModalPage,
@@ -114,23 +118,77 @@ import { LoginComponentPage } from '../pages/login-component/login-component';
     CareRegistryAddItemPage,
     CareRegistryFirstTimeModalPage,
     CareRegistryItemDetailsPage,
+     DatePicker,
     RegisterPage,
-    LoginComponentPage,
-    GlobalCarePage,
-    DatePicker
+    LoginComponentPage, 
+    GlobalCarePage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    HttpModule,
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    DatePicker
+    DatePicker,
+    SelectPage,
+    TabsPage,
+    CulturePage, 
+    InfoNamePage, 
+    InfoBirthPage, 
+    InfoSsnModalPage, 
+    InfoDeathPage, 
+    InfoAddrPage, 
+    InfoMilitaryPage, 
+    InfoHonorsPage, 
+    InfoEduPage, 
+    InfoWorkPage, 
+    CultureSpousePage,
+    CultureSpousecontPage, 
+    CultureParentsPage, 
+    CultureFatherPage, 
+    CultureRacePage,
+    ServiceDispPage,
+    ServiceModalPage,
+    ServiceViewingPage,
+    ServiceViewModalPage,
+    ServiceRemainsPage,
+    ServiceRemainsModalPage,
+    ServiceCemeteryPage,
+    Welcome1Page,
+    Welcome2Page,
+    Welcome3Page,
+    Home1Page,
+    Planning1Page,
+    Planning2Page,
+    Search1Page,
+    EventInfoOnePage,
+    EventMainPage,
+    Search2Page,
+    EventsPage,
+    EventMainPage2,
+    EventMainPage3, 
+    CareModalPage,
+    EventMainPage3,
+    CareRegistryListPage,
+    CareRegistryAddItemPage,
+    CareRegistryFirstTimeModalPage,
+    CareRegistryItemDetailsPage,
+     DatePicker,
+    RegisterPage,
+    LoginComponentPage, 
+    GlobalCarePage
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    InAppBrowser,
+    SplashScreen,
+    Calendar,
+    CallNumber,
+    SocialSharing,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

@@ -1,5 +1,5 @@
 // Ionic Variables and Theming. For more info, please see:
-// http://ionicframework.com/docs/theming/
+// http://ionicframework.com/docs/v2/theming/
 
 // Font path is used to include ionicons,
 // roboto, and noto sans fonts
@@ -20,9 +20,9 @@ $app-direction: ltr;
 // To customize the look and feel of this app, you can override
 // the Sass variables found in Ionic's source scss files.
 // To view all the possible Ionic variables, see:
-// http://ionicframework.com/docs/theming/overriding-ionic-variables/
+// http://ionicframework.com/docs/v2/theming/overriding-ionic-variables/
 
-
+$headings-font-weight: 300;
 
 
 // Named Color Variables
@@ -34,12 +34,19 @@ $app-direction: ltr;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #488aff,
-  secondary:  #32db64,
+  primary:    #7CADE4,
+  secondary:  #33475C,
   danger:     #f53d3d,
   light:      #f4f4f4,
-  dark:       #222
+  dark:       #222,
+  favorite:   #69BB7B,
+  twitter:    #1da1f4,
+  google:     #dc4a38,
+  vimeo:      #23b6ea,
+  header: #979797
 );
+
+
 
 
 // App iOS Variables
@@ -48,18 +55,36 @@ $colors: (
 
 
 
-
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here
 
+// Use the primary color as the background for the toolbar-md-background
+$toolbar-md-background:                   color($colors, primary);
+$toolbar-md-border:  color($colors, header);
+// Change the color of the segment button text
+$toolbar-md-active-color:                 #fff;
 
+$item-ios-padding-left: 25px ;
+$item-ios-padding-right: 25px ;
+$datetime-ios-padding-right: 25px;
+$datetime-ios-padding-left: 25px;
+$text-input-ios-margin-top: 0;
+$text-input-ios-margin-bottom: 0;
+$text-input-ios-margin-left: 0;
+$text-input-ios-margin-right: 0;
+
+
+
+$text-input-ios-margin-top: 0;
+$text-input-ios-margin-bottom: 0;
+$text-input-ios-margin-left: 0;
+$text-input-ios-margin-right: 0;
 
 
 // App Windows Variables
 // --------------------------------------------------
 // Windows only Sass variables can go here
-
 
 
 
@@ -76,13 +101,800 @@ $colors: (
 // Ionicons
 // --------------------------------------------------
 // The premium icon font for Ionic. For more info, please see:
-// http://ionicframework.com/docs/ionicons/
+// http://ionicframework.com/docs/v2/ionicons/
 
 @import "ionic.ionicons";
 
 
 // Fonts
 // --------------------------------------------------
+// Roboto font is used by default for Material Design. Noto sans
+// is used by default for Windows.
 
 @import "roboto";
 @import "noto-sans";
+
+//Custom Progress Bar - CJM
+#myProgress {
+ margin-left: 25%;
+  width: 50%;
+  background-color: #33475C;;
+  border-radius: 7px;
+}
+
+#myBar {
+  width: 10%;
+  height: 5px;
+  background-color: #7CADE4;
+  border-radius: 7px;
+}/* Understanding your l: */
+
+.myProgressMeal
+{
+     bottom: 0px;
+     left: 0px; 
+     position: absolute; 
+     background-color: #E6785A ; 
+     width: 10%; height: 10px
+}
+
+.myProgressTransport
+{
+     bottom: 0px;
+     left: 0px; 
+     position: absolute; 
+     background-color: #E6785A ; 
+     width: 10%; height: 10px
+}
+
+.myProgressHouseItem
+{
+     bottom: 0px;
+     left: 0px; 
+     position: absolute; 
+     background-color: #E6785A ; 
+     width: 10%; height: 10px
+}
+
+.myProgressSupport
+{
+     bottom: 0px;
+     left: 0px; 
+     position: absolute; 
+     background-color: #E6785A ; 
+     width: 10%; height: 10px
+}
+
+.myProgressGlobalText
+{
+    top: 5px; 
+    left: 5px;
+     margin: 0;
+      position: absolute;
+      text-align: left;
+}
+
+.myProgressMealPercentage
+{
+     bottom: 5px;
+     right: 5px; 
+     position: absolute;   
+     h3{
+        font-weight: bold; 
+     } 
+     
+}
+.myProgressTransportPercentage
+{
+     bottom: 5px;
+     right: 5px; 
+     position: absolute;   
+     h3{
+        font-weight: bold; 
+     } 
+     
+}
+
+.myProgressHouseItemPercentage
+{
+     bottom: 5px;
+     right: 5px; 
+     position: absolute;   
+     h3{
+        font-weight: bold; 
+     } 
+     
+}
+
+.myProgressSupportPercentage
+{
+     bottom: 5px;
+     right: 5px; 
+     position: absolute;   
+     h3{
+        font-weight: bold; 
+     } 
+     
+}
+
+
+//Custom CSS Styling for EventApp ProtoType
+
+  .bgCard{
+     background: #ffffff;
+ 
+
+
+       }
+
+       .bgPane{
+        background: #ffffff;
+height: 100%;
+padding: 10px, 10px;;
+   
+   
+          }
+
+
+.friendlyName 
+{
+  color: #7CADE4;
+}
+
+
+  .footerButtonWhite{
+    /* Rectangle 28: */
+    background: #FFFFFF;
+    /* Primary: */
+    font-family: 'Roboto', sans-serif;
+    font-size: 15.16px;
+    border: 2px solid #33475C;
+    color: #4A4A4A;
+    width: 100%;
+    height: 2.8em;
+    align-items: center;
+  }
+
+
+
+
+  .item-ios.item-block .item-inner {
+
+  
+    border-bottom: 0;
+  }
+
+
+
+  .text-input-ios{
+    margin: 0;
+    height: 100%;
+}
+
+   .marButton
+    {
+     width: 50%;
+     margin-bottom: 5%;
+    }
+
+    .whyModal
+    {
+        margin: 60%;
+        color: #7CADE4;
+        font-size: 9px;
+    }
+     .whyModal2
+    {
+        margin: 40%;
+        color: #7CADE4;
+        font-size: 9px;
+    }
+
+
+.footerButtonBump
+{
+    padding: 0;
+}
+
+.footerButtonDouble{
+  /* Rectangle 28: */
+  background: #E6785A;
+  /* Primary: */
+  font-family: 'Roboto', sans-serif;
+  font-size: 15.16px;
+  color: #FFFFFF;
+  width: 100%;
+  height: 2.8em;
+  
+}
+
+
+
+.orangeSwitchButton{
+  /* Rectangle 28: */
+  background: #E6785A;
+  /* Primary: */
+  font-family: 'Roboto', sans-serif;
+  font-size: 15.16px;
+  color: #FFFFFF;
+  height: 2.8em;
+  align-items: center;
+}
+/////END OF COLE'S CSS CHANGES!!!
+
+
+
+
+
+/////START OF TRAVI'S CSS CHANGES!!!!
+
+
+
+
+
+.headerButtonOrange{
+  /* Rectangle 28: */
+  background: #E6785A;
+  /* Primary: */
+  font-family: 'Roboto', sans-serif;
+  font-size: 15.16px;
+  color: #FFFFFF;
+  width: 80%;
+  height: 3.0em;
+  align-items: center;
+  padding-top:10px;
+  padding-bottom: 10px;
+}
+
+
+.footerButton{
+  /* Rectangle 28: */
+  background: #E6785A;
+  /* Primary: */
+  font-family: 'Roboto', sans-serif;
+  font-size: 15.16px;
+  color: #FFFFFF;
+  width: 100%;
+  height: 2.8em;
+  align-items: center;
+}
+
+.ios{
+    .headerBarBump{
+        height: 20px;
+        background-color: #7cade4;
+    }
+    
+        .headerBarBumpTwo
+        {
+  height: 20px;
+  opacity: .7;
+        background-color: #33475C;
+        }
+    
+}
+
+.customHeaderClass{
+    background-color: #7cade4;
+    border-bottom: solid 0.5px #979797;
+    font-family: Roboto;
+	font-size: 1.5em;
+	font-weight: bold;
+    text-align: center;
+    vertical-align: center;
+    color: #ffffff;
+    height: 2.8em;
+    line-height: 2.8em;
+    position: relative;
+    padding-top: 10px;
+}
+
+
+/* Rectangle: */
+
+.customEventHeaderClass{
+    background-image: url("../assets/img/eventheader.png");
+        background-size: 107%;
+background-repeat: no-repeat;
+    border-bottom: solid 0.5px #979797;
+    font-family: Roboto;
+	font-size: 1.5em;
+	
+    text-align: center;
+    vertical-align: center;
+    color: #ffffff;
+    height: 6.2em;
+    opacity: 1;
+    position: relative;
+    /* Mask: */
+box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);
+/* 555799527: */
+/* Sketch doesnt export pattern fills at this point */
+/* Rectangle: */
+.frontLayer
+{ padding-top: 10px;
+    height: 100%;
+    background-color: rgba(51, 71, 92, 0.7
+    );
+opacity: 1;
+
+}
+/* StatusBar: */
+    img{
+        height: 1.3em;
+         margin-top: -20px;
+    }
+    .date
+    { text-align: left;
+    margin-left: 5%;
+    margin-bottom: -5%;
+        span{
+    
+font-size: 3.8em;
+opacity: 1.0;
+        }
+    }
+}
+
+
+ 
+
+.customEventMedHeaderClass{
+    background-image: url("../assets/img/eventheader.png");
+        background-size: 107%;
+background-repeat: no-repeat;
+    border-bottom: solid 0.5px #979797;
+    font-family: Roboto;
+	font-size: 1.5em;
+    text-align: center;
+    vertical-align: center;
+    color: #ffffff;
+    opacity: 1;
+    position: relative;
+    /* Mask: */
+box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);
+/* 555799527: */
+/* Sketch doesnt export pattern fills at this point */
+/* Rectangle: */
+.frontLayer
+{ padding-top: 10px;
+    height: 100%;
+    background-color: rgba(51, 71, 92, 0.7
+    );
+opacity: 1;
+
+}
+/* StatusBar: */
+    img{
+        height: 1.3em;
+         margin-top: -20px;
+    }
+    .date
+    { text-align: left;
+    margin-left: 5%;
+    margin-bottom: -5%;
+        span{
+    
+font-size: 3.8em;
+opacity: 1.0;
+        }
+    }
+}
+
+
+//Event Elongated Header
+
+.customEventLongHeaderClass{
+    background-image: url("../assets/img/flag.jpg");
+   background-size: 130%;
+   background-position: left; 
+
+background-repeat: no-repeat;
+    border-bottom: solid 0.5px #979797;
+    font-family: Roboto;
+	font-size: 1.5em;
+	
+    text-align: center;
+    vertical-align: center;
+    color: #ffffff;
+    height: 350px;
+    opacity: 1;
+    position: relative;
+    /* Mask: */
+box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);
+/* 555799527: */
+/* Sketch doesnt export pattern fills at this point */
+/* Rectangle: */
+.frontLayer
+{ padding-top: 10px;
+    height: 100%;
+    background-color: rgba(51, 71, 92, 0.7
+    );
+opacity: 1;
+
+}
+/* StatusBar: */
+    img{
+        height: 1.3em;
+         margin-top: -20px;
+    }
+    .date
+    { text-align: left;
+    margin-left: 5%;
+    margin-bottom: -5%;
+        span{
+    
+font-size: 3.8em;
+opacity: 1.0;
+        }
+    }
+}
+
+
+
+//Event Elongated Header
+
+.customEventLongHeaderClassTwo{
+    background-image: url("../assets/img/flag.jpg");
+   background-size: 200%;
+   background-position: left; 
+
+background-repeat: no-repeat;
+    border-bottom: solid 0.5px #979797;
+    font-family: Roboto;
+	font-size: 1.5em;
+	
+    text-align: center;
+    vertical-align: center;
+    color: #ffffff;
+    height: 700px;
+    opacity: 1;
+    position: relative;
+    /* Mask: */
+box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);
+/* 555799527: */
+/* Sketch doesnt export pattern fills at this point */
+/* Rectangle: */
+.frontLayer
+{ padding-top: 10px;
+    height: 100%;
+    background-color: rgba(51, 71, 92, 0.7
+    );
+opacity: 1;
+
+}
+/* StatusBar: */
+    img{
+        height: 1.3em;
+         margin-top: -20px;
+    }
+    .date
+    { text-align: left;
+    margin-left: 5%;
+    margin-bottom: -5%;
+        span{
+    
+font-size: 3.8em;
+opacity: 1.0;
+        }
+    }
+}
+
+
+
+
+
+
+.menuIcon{
+    height: 50%;
+    position: absolute;
+    right: 20px;
+    top: 25%;
+}
+
+.welcomeSkipText{
+    position: fixed; 
+    top: 10px; 
+    right: 10px;
+    color: #CCCCCC;
+}
+
+.welcomeCenter{
+    position: relative;
+    top: 33%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    width:100%;
+    display: block;
+    margin: auto;
+}
+
+.welcomeHeader1{
+    font-family: Roboto;
+    font-size: 2em;
+    font-weight: 900;
+    text-align: center;
+    color: #ffffff;
+    padding-top: 15px;
+}
+
+.welcomeHeader2{
+    font-family: Roboto;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    color: #ffffff;
+    padding-top: 15px;
+}
+
+.welcomeImage{
+    height: 5em;
+    display: block;
+    margin: auto;
+}
+
+.ios{
+  .welcomeSkipText{
+      position: fixed; 
+      top: 30px; 
+      right: 10px;
+  }
+}
+
+.whiteButton
+{
+    /* Rectangle 28: */
+    background: #FFFFFF;
+	border-radius: 3px;
+	border: solid 2px #33475c;
+    text-align: center;
+    height: 2.5em;
+    width: 48%;
+
+    font-size: 1.1em;
+	font-family: Roboto;
+	font-weight: bold;
+	text-align: center;
+	color: #33475c;
+}
+
+.orangeButton
+{
+    /* Rectangle 28: */
+    background: #E6785A;
+	border-radius: 3px;
+    text-align: center;
+    height: 2.5em;
+    width: 48%;
+
+    font-size: 1.1em;
+	font-family: Roboto;
+	font-weight: bold;
+	text-align: center;
+    color: #FFFFFF;
+}
+
+.horizontalBreak{
+    width: 4em;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    height: 2px !important;
+}
+
+.container{
+    padding: 20px 10px 20px 10px;
+}
+
+.cardStyle{
+    background: #ffffff;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);
+    border-radius: 7px;
+    text-align: center;
+    padding: 10px 20px 10px 20px;
+}
+
+.mainFont{	
+    font-family: Roboto;
+	font-size: 1.6em;
+	font-weight: bold;
+    color: #4a4a4a;
+}
+
+.subFont{
+    font-family: Roboto;
+    font-size: 1.6em;
+    color: #4F565C
+}
+
+.blueText{
+    color: #7CADE4 !important;
+}
+
+.inputField {
+    background: #FFFFFF;
+    border: 2px solid #33475C;
+    border-radius: 1.5px;
+    height: 2.3em;
+    text-align: start;
+}
+
+.noHeaderInputField{
+    margin:0 !important;
+}
+
+.searchField{
+    background: url("../assets/img/search.png") no-repeat scroll 7px;
+    padding-left:30px;
+    background-size: 1.2em;
+}
+
+.text-input-ios{
+    margin: 0 !important;
+    height: 100%;
+}
+
+.text-input-md{
+    margin: 0 !important;
+    height: 100%;
+}
+
+.searchMainFont{
+    color: #33475C;
+    font-size: 1.3em;
+    font-weight: bold;
+    font-family: Roboto;
+    
+}
+
+.searchSubFont{
+    color: #33475C;
+    font-size: 1.3em;
+    font-family: Roboto;
+    
+}
+
+.noResults{
+    font-family: Roboto;
+    color: #B2BAC4;
+    font-size: 1.3em;
+    font-weight: bold;
+    font-style: italic;
+    text-align: center;
+    margin: 20px;
+}
+
+.blueRightText{
+    text-align: right; 
+    color: #7cade4; 
+    margin-top: 10px
+}
+
+
+
+//EventTabs Styling Refactoring TODO
+
+.eventTabsMain{
+
+    background-color: #ffffff;
+     margin-top: 10px;
+
+.tabSelected
+{
+    border-bottom-color: #E6785A;
+     border-bottom-width:4px;
+     width: 100%;
+     border-bottom-style: solid;
+}
+
+.ml10
+{
+    margin-left: 10%;
+}
+.eventTabs
+{
+    color: #E6785A;
+     font-size: 1.3em;
+     div{
+        font-size: .4em; 
+        border-bottom-width:2px;
+        text-align: center;
+     }
+}
+
+}
+
+
+
+
+
+
+.eventHeaderDiv
+{
+    position:absolute; 
+    width: 30%;
+     margin-left: -5px;
+}
+.eventHeaderMonth
+{
+    font-size:1.2em!important; 
+    opacity: 1!important;
+     margin-left: 15px;
+      margin-bottom: -10px;
+      letter-spacing: 0.1px;
+}
+
+.eventHeaderDate
+{
+    position: relative; 
+    top: -12px; opacity: 1; 
+     margin-left: 15px;
+}
+
+.eventHeaderMainText{
+    margin-left: 30%;
+     text-align:left;
+
+     .em1{
+        font-size: 1em; opacity: 1;
+     }
+
+     .em08{
+        font-size: .8em; 
+        opacity: 1;
+     }
+}
+.scheduleList
+{
+    margin-left: 5%; 
+    margin-right: 5%; 
+    margin-top: 6px; 
+    text-align:left;
+
+    .scheduleHeader{
+        font-size: 1.3em;
+        color: #686C71
+    }
+    ul{
+        list-style-type: square;
+        li{
+             color: #E6785A;
+     margin-top:3px;
+     
+                span{
+                    font-size: 1.3em;  
+                    color: #686C71;
+          }
+}
+         }
+    }
+   
+     
+    .headerOverride
+    {
+        position: absolute !important;;
+         width: 30% !important;
+          margin-left: -5px !important;
+    }
+
+
+
+   textarea
+   {
+       
+            .text-input-ios
+       {
+padding-bottom: 10% !important;
+       }
+      
+      
+   }
+ 
+.no-scroll .scroll-content{
+     overflow: hidden;
+}
+
+
+
+
+ //Cole's newly found ionic overrides for stupid shit
+ 

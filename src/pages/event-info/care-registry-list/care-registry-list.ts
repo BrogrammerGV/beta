@@ -6,7 +6,7 @@ import { Storage } from '@ionic/storage';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { CallNumber } from '@ionic-native/call-number';
 
-import { DatePicker } from 'ionic2-date-picker/ionic2-date-picker';
+import { DatePicker } from 'ionic2-date-picker';
 
 
 import { CareRegistryAddItemPage } from '../care-registry-add-item/care-registry-add-item';
