@@ -95,7 +95,7 @@ export class RegisterPage {
       registerCognito({
         ClientId: '4qedlf7cu5lo5r670tk6d90d19', /* required */
         Password: this.userInfo.password, /* required */
-        Username: this.userInfo.email, /* required */
+        Username: this.userInfo.email.toLowerCase(), /* required */
         UserAttributes: [
           {
             Name: 'given_name', /* required */

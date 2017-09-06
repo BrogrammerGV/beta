@@ -81,7 +81,7 @@ export class LoginComponentPage {
   login() {
     console.log("test2");
     if (this.userName && this.password) {
-      loginCognitoUser(this.userName, this.password)
+      loginCognitoUser(this.userName.toLowerCase(), this.password)
         .then(function (data: any) {
           //console.log(this);
           this.storage.set("authToken", data);
