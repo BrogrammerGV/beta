@@ -1,0 +1,48 @@
+<!--
+  Generated template for the AdminLoginPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+
+<ion-content style="background-color: rgba(51, 71, 92, 0.7
+);" padding no-bounce>
+
+
+  <div class="outerBackground" style="background-color: #ffffff; margin-left: 35%; margin-right: 35%; margin-top: 15%;">
+    <div style="text-align: center; z-index: 10;  margin: 3%; height: 50%; padding-top: 5%">
+      <span class="blueText" style="font-size: 2.6em; font-weight: bold;">Welcome to PostScript.</span>
+      <hr class="horizontalBreak" style="margin-top: 1.2em; margin-bottom: 1.2em">
+      <div class="mainFont" style="text-align: center">Please login to continue.</div>
+    
+    <br />
+      <ion-item no-lines>
+        <ion-label stacked class="inputLabelTextWeb">Email Address</ion-label>
+        <ion-input placeholder="login@example.com" type="email" required class="inputFieldWeb" [(ngModel)]="adminUserName"></ion-input>
+      </ion-item>
+      <br />
+      <ion-item no-lines>
+        <ion-label stacked class="inputLabelTextWeb">Password</ion-label>
+        <ion-input  (keyup.enter)="handleLogin()" placeholder="Type here" type="password" required class="inputFieldWeb" [(ngModel)]="adminPassword"></ion-input>
+      </ion-item>
+      <div (click)="forgotPassword()"class="blueRightText"><a [href]="mailToURL"> Forgot password?</a></div>
+    
+      <div style="margin: auto; margin-top: 2em" *ngIf="confirm">
+				<div class="mainFont" style="text-align: center">Please verify your account by entering the six-digit code from your confirmation email.</div>
+	
+					<ion-item no-lines>
+						<ion-label stacked class="inputLabelTextWeb">Verification Code</ion-label>
+						<ion-input placeholder="Type here" required class="inputFieldWeb" [(ngModel)]="confirmationCode"></ion-input>
+					</ion-item>
+					<div (click)="resendConfirmation()" class="blueRightText">Resend Confirmation</div>
+			</div>
+
+
+
+    </div>
+  </div>
+
+</ion-content>
+
+

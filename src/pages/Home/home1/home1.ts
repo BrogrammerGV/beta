@@ -7,6 +7,9 @@ import { LoginPage } from '../../../pages/login/login';
 import { Planning1Page } from '../../../pages/Home/planning1/planning1';
 import { Planning2Page } from '../../../pages/Home/planning2/planning2';
 import { Search1Page } from '../../../pages/Home/search1/search1';
+import { AdminLoginPage } from '../../../pages/admin/admin-login/admin-login';
+import { AdminManagerPage } from '../../../pages/admin/admin-manager/admin-manager';
+
 
 declare let registerCognito: any;
 /**
@@ -171,4 +174,11 @@ export class Home1Page {
       alert("Please enter a search term.");
     }
   }
+
+  goToAdmin()
+  {
+    //this.navCtrl.setRoot(AdminLoginPage)
+     this.navCtrl.setRoot(AdminManagerPage)
+  }
+
 }
