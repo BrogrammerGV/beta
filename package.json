@@ -1,8 +1,8 @@
 {
   "name": "EventApp",
   "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "author": "Homesteaders Life Company",
+  "homepage": "http://homesteaderslife.com",
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",
