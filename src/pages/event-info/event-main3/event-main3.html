@@ -1,79 +1,185 @@
 <ion-header>
   <div class="headerBarBumpTwo"></div>
   <div class="customEventMedHeaderClass">
+    <div class="frontLayer">
+      <!--Start of Custom Tab Header: CJM -->
+      <div class="date headerOverride">
+        <span class="eventHeaderMonth"><b> {{eventMonth}}</b></span>
+        <span class="eventHeaderDate"> <b>{{eventDate}}</b> </span>
+      </div>
+      <div class="eventHeaderMainText">
+        <img src="assets/img/menu.png" class="menuIcon" />
+        <span class="em08"> Remembering</span>
+        <br />
+        <span class="em1"> <b>{{nameToUse}}</b> </span>
+        <br />
+        <span class="em08"> {{funeralHome}}</span>
+        <br />
+        <span class="em08"> {{eventTime}} | {{eventMonth}}. {{eventDate}}</span>
+      </div>
+      <div class="row eventTabsMain">
+        <div (click)="goToEvents()" class="col">
+          <ion-icon class="eventTabs" ios="ios-calendar-outline" md="md-calendar">
+            <div>
+              Event
+            </div>
+          </ion-icon>
+        </div>
+        <div (click)="goToCare()" class="col ml10">
+          <ion-icon class="eventTabs" name="heart-outline">
+            <div>
+              Registry of <br /> Care
+            </div>
+          </ion-icon>
+        </div>
+        <div (click)="goToFeed()" class="col ml10 tabSelected">
+          <ion-icon class="eventTabs" ios="ios-paper-outline" md="md-paper">
+            <div>
+              Condolence <br /> Feed
+            </div>
+          </ion-icon>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    
-  
-<div  class="frontLayer">
-
-<!--Start of Custom Tab Header: CJM -->
-
-                <div  class="date headerOverride">
-                    <span class="eventHeaderMonth"><b> {{eventMonth}}</b></span> 
-                    <span class="eventHeaderDate"> <b>{{eventDate}}</b> </span>
-                    </div>
-                            <div class="eventHeaderMainText">
-                                <img  src="assets/img/menu.png" class="menuIcon" />
-                                  <span class="em08"> Remebering</span>
-                              <br />
-                                  <span class="em1"> <b>{{nameToUse}}</b> </span>
-                              <br />     
-                                  <span class="em08"> {{funeralHome}}</span>
-                              <br /> 
-                                  <span class="em08"> {{eventTime}} | {{eventMonth}}. {{eventDate}}</span>
-                  </div>
-
-
-                <div class="row eventTabsMain">
-                    
-                    <div (click)="goToEvents()" class="col">
-                        <ion-icon class="eventTabs" ios="ios-calendar-outline" md="md-calendar">
-                          <div>
-                        Event
-                        </div>
-                        </ion-icon>
-                    
-                    </div>
-                    
-                      <div (click)="goToCare()"  class="col ml10">
-                      <ion-icon  class="eventTabs" name="heart-outline">
-                        <div >
-                        Registry of <br /> Care
-                        </div>
-                      </ion-icon>
-                      
-                    </div>
-                    
-                    <div (click)="goToFeed()" class="col ml10 tabSelected">
-                      <ion-icon class="eventTabs" ios="ios-paper-outline" md="md-paper">
-                    <div>
-                        Condolence <br /> Feed 
-                        </div>
-                      </ion-icon>
-                      
-                    
-                    </div>
-                    
-                    </div>
-
-
-
-                </div>
-
-                  </div>
-
-<!--End of Custom Tab Header: CJM -->
+  <!--End of Custom Tab Header: CJM -->
 </ion-header>
 
 
 <ion-content>
+  <ion-slides>
+      <ion-slide>
+        <div class="cardStyle" style="position: absolute; top: 10px; left: 10px; right: 10px; bottom: 10px;">
+          <div style="position: relative; height: 100%; width: 100%; overflow: auto; text-align: center">
+            <div class="mainFont" style="width: 100%; margin-top: 10px; font-size: 1.3em">Messages of Support from<br /><span class="blueText">{{firstName}}'s</span> Loved Ones</div>
+            <hr class="horizontalBreak" style="margin-top: 1em; margin-bottom: 1em;" />
+            <div class="subFont" style="font-size: 1em" *ngIf="noCondolences && isPlanner === true">
+              There are no messages to display yet. Check back often for updates.
+            </div>
+            <div class="subFont" style="font-size: 1em" *ngIf="noCondolences && isPlanner === false">
+              Be the first to show support for <span>{{firstName}}’s</span> family by adding a message of encouragement.
+            </div>
+            <div style="border-bottom: 1px solid rgba(0,0,0,0.12); text-align: left; padding-bottom: 5px; margin-bottom: 0.7em" (click)="openItem(item)"
+              *ngFor="let item of condolences">
+              <span class="mainFont" style="font-size: 1.3em">{{item.submittedBy.S}}
+              <img src="assets/img/arrow.png" style="float: right; height: 1em; padding-top: 5px" /></span><br
+              />
+              <span style="font-weight: normal; font-size: 1em">{{item.note.S.split(' ').slice(0,4).join(' ')}}...</span>
+            </div>
+          </div>
+        </div>
+      </ion-slide>
 
+      <ion-slide>
+        <div class="cardStyle" style="position: absolute; top: 10px; left: 10px; right: 10px; bottom: 10px;">
+          <div style="position: relative; height: 100%; width: 100%; overflow: auto; text-align: center; padding-top: 20px; padding-left: 20px; padding-right: 20px; text-align: left" *ngIf="condolence">
+            <div class="mainFont" style="font-size: 1.3em">{{condolence.submittedBy.S}}</div>
+            <div *ngIf="condolence.hasPicture.BOOL" style="width: 100%; margin-top: 10px; margin-bottom: 10px; max-height: 300px">
+              <img src="https://s3.amazonaws.com/inremembrancedata/{{condolence.condolenceID.S}}-picture.jpg" style="max-height: 300px" />
+            </div>
+            <div *ngIf="condolence.hasVideo.BOOL" style="width: 100%; margin-top: 10px; margin-bottom: 10px; max-height: 300px">
+              <video controls="controls" style="width: 100%" name="Video Name" preload="metadata" src="https://s3.amazonaws.com/inremembrancedata/{{condolence.condolenceID.S}}-video.mp4#t=0.01" ></video>
+            </div>
+            <div class="subFont" style="font-size: 1em; padding-top: 10px">{{condolence.note.S}}</div>
+          </div>
+        </div>
+      </ion-slide>
+      <ion-slide>
+          <div class="cardStyle" style="position: absolute; top: 10px; left: 10px; right: 10px; bottom: 10px; ">
+              <div style="position: relative; width: 100%; height: 100%; overflow: auto">
+                <page-register textCopy="To post a message, please sign up for an account."></page-register>
+              </div>
+            </div>
+      </ion-slide>
+      <ion-slide>
+          <div class="cardStyle" style="position: absolute; top: 10px; left: 10px; right: 10px; bottom: 10px;">
+              <div style="position: relative; width: 100%; height: 100%">
+                  <div class="welcomeCenter">
+                    <img src="assets/img/checkmark.png" class="welcomeImage" />
+                    <br /><br />
+                    <div class="mainFont">A confirmation email is on its way. In the meantime, click continue to claim this task.</div>
+                  </div>
+              </div>
+            </div>
+      </ion-slide>
+      <ion-slide>
+          <div class="cardStyle" style="position: absolute; top: 10px; left: 10px; right: 10px; bottom: 10px;">
+              <div style="position: relative; width: 100%; height: 100%">
+          <page-login-component></page-login-component>
+              </div>
+          </div>
+      </ion-slide>
 
-
-
-
-
-
-
+      <ion-slide>
+          <div class="cardStyle" style="position: absolute; top: 10px; left: 10px; right: 10px; bottom: 10px;">
+            <div style="position: relative; height: 100%; width: 100%; overflow: auto; text-align: center; padding-top: 20px; padding-left: 20px; padding-right: 20px; text-align: center">
+              <div class="mainFont" style="font-size: 1.3em">Add a Message of Support</div>
+              <hr class="horizontalBreak" style="margin-top: 1.5em; margin-bottom: 1.5em" />
+              
+              <div *ngIf="pictureData.length > 0" style="width: 100%; margin-top: 10px; margin-bottom: 10px; max-height: 300px; position: relative">
+                <img [src]="pictureData" style="max-height: 300px" />
+              </div>
+              <div *ngIf="videoData.length > 0" style="width: 100%; margin-top: 10px; margin-bottom: 10px; max-height: 300px">
+                <video controls="controls" style="width: 100%; max-height: 300px" preload="metadata" name="Video Name" preload="metadata" [src]="videoData" ></video>
+              </div>
+              <div *ngIf="pictureData.length > 0 || videoData.length > 0" class="blueRightText" style="text-align: center" (click)="clearPhotoVideo()">Clear</div>
+              <ion-label stacked class="inputLabelText" style="text-align: left">Add Your Message</ion-label>
+              <textarea placeholder="Type here" style="margin: 0px; padding: 5px; width: 100% !important; border: 2px solid; font-size: 0.8em; font-weight: normal; height: 5em; border-radius: 3px" [(ngModel)]="note"></textarea>
+              <div style="margin-top: 10px">
+              <button class="whiteButton" (click)="addPhoto()">Add Photo</button>
+              <!-- <button class="whiteButton" (click)="addVideo()">Add Video</button> -->
+            </div>
+              <div class="subFont" style="font-size: 0.7em; padding-top: 10px">Other users will be able to see this message.</div>
+            </div>
+          </div>
+      </ion-slide>
+  </ion-slides>
 </ion-content>
 
+<ion-footer>
+  <ion-slides id="footerSlides" #footerSlides>
+      <ion-slide>
+        <button class="footerButton" (click)="addMessage()">Add Message</button>
+      </ion-slide>
+      <ion-slide>
+        <button class="footerButton" (click)="moveSlides(0)">Back</button>
+      </ion-slide>
+      <ion-slide>
+    <!-- Register -->
+        <ion-row>
+          <ion-col style="padding: 0;">
+            <button class="footerButtonWhite" (click)="moveSlides(0)">Back</button>
+          </ion-col>
+          <ion-col style="padding: 0;">
+            <button class="footerButtonDouble" (click)="this.eventHandler.publish('register');">Post</button>
+          </ion-col>
+        </ion-row>
+      </ion-slide>
+      <ion-slide>
+    <!-- Register Confirm -->
+          <button class="footerButton" (click)="moveSlides(5)">Continue</button>
+      </ion-slide>
+      <ion-slide>
+    <!-- Login -->
+        <ion-row>
+            <ion-col style="padding: 0;">
+              <button class="footerButtonWhite" (click)="moveSlides(2); this.eventHandler.publish('loginBack')">Back</button>
+            </ion-col>
+            <ion-col style="padding: 0;">
+              <button class="footerButtonDouble" (click)="this.eventHandler.publish('tryLogin');">Next</button>
+            </ion-col>
+          </ion-row>
+      </ion-slide>
+      <ion-slide>
+          <ion-row>
+              <ion-col style="padding: 0;">
+                <button class="footerButtonWhite" (click)="note = ''; pictureData = ''; videoData = ''; moveSlides(0)">Back</button>
+              </ion-col>
+              <ion-col style="padding: 0;">
+                <button class="footerButtonDouble" (click)="postMessage()">Post</button>
+              </ion-col>
+            </ion-row>
+        </ion-slide>
+  </ion-slides>
+</ion-footer>

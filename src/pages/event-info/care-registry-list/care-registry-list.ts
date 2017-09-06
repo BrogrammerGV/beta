@@ -24,6 +24,7 @@ import { LoginComponentPage } from '../../login-component/login-component';
  */
 declare let lambda: any;
 declare let cognitoHelper: any;
+declare let AWS: any;
 @IonicPage()
 
 @Component({
@@ -81,6 +82,9 @@ export class CareRegistryListPage {
   public eventID: string = "";
   public isPlanner: boolean = false;
   public comment: string = "";
+  public phoneNum: string = "";
+  public deceasedFirst: string = "";
+  public userFirst: string = "";
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController,
         public datePicker: DatePicker, public alertCtrl: AlertController,public callNumber: CallNumber, public socialSharing: SocialSharing, public eventHandler: Events, public storage: Storage) {
@@ -98,7 +102,8 @@ console.log("NavigationCheck:" + this.isPlanner)
         this.slides.lockSwipes(true);
         this.footerSlide.lockSwipes(true);
         let x: string = this.navParams.get('pageBool');
-      this.careCategory = this.navParams.get("careCategory");
+        this.careCategory = this.navParams.get("careCategory");
+        this.deceasedFirst = this.navParams.get("firstName");
       
 
         if (x == 'Y') {
@@ -236,6 +241,10 @@ console.log("NavigationCheck:" + this.isPlanner)
     .then(function(data: any){
       //console.log(this);
       this.showItems(data);
+    }.bind(this));
+
+    lambda("CheckIfPlanner",{eventID: this.eventID, userID: AWS.config.credentials.identityId}).then(function(data:any){
+      this.isPlanner = data;
     }.bind(this));
   }
 
@@ -465,6 +474,35 @@ presentAlert() {
         buttons: ['Dismiss']
     });
     alert.present();
+}
+
+validatePhone(){
+  if(this.phoneNum.length != 12 || this.phoneNum.split('-').length != 3){
+    alert("Please provide your phone number in 000-000-0000 format.")
+  }
+  else{
+    cognitoHelper("attr").then((data:any)=>{
+      this.userFirst = data[2].Value;
+      lambda("ClaimCareRegistryTask",{eventID: this.eventID, careID: this.event.careID.S, firstName: data[2].Value, lastName: data[3].Value, email: data[4].Value,phone: this.phoneNum, userID: data[0].Value})
+      .then(function(data: any){
+        if(data){
+          alert(data.errorMessage);
+          this.getData();
+          this.moveSlides(0);
+  
+        }else{
+          this.getData();
+          this.moveSlides(6);
+        }
+      }.bind(this))
+      .catch(function(data:any){
+        alert("An error has occurred, please try again later.");
+        this.getData();
+        this.moveSlides(0);
+      }.bind(this));
+    }).catch((err: any)=>{
+    })    
+  }
 }
 
 }

@@ -12,6 +12,9 @@ import { IonicStorageModule } from '@ionic/storage';
 import { HttpModule } from '@angular/http';
 import { SocialSharing } from '@ionic-native/social-sharing';
 
+import { Camera, CameraOptions } from '@ionic-native/camera';
+import { MediaCapture, MediaFile, CaptureError, CaptureImageOptions } from '@ionic-native/media-capture';
+
 import { MyApp } from './app.component';
 
 //Custom Pages: CJM 08/03/2017
@@ -192,6 +195,8 @@ import { LoginPage } from '../pages/login/login';
     Calendar,
     CallNumber,
     SocialSharing,
+    Camera,
+    MediaCapture,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
