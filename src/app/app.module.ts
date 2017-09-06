@@ -1,3 +1,4 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -66,7 +67,7 @@ import { CareRegistryFirstTimeModalPage } from '../pages/event-info/care-registr
 import { CareRegistryItemDetailsPage } from '../pages/event-info/care-registry-item-details/care-registry-item-details';
 import { RegisterPage } from '../pages/register/register';
 import { LoginComponentPage } from '../pages/login-component/login-component';
-
+import { LoginPage } from '../pages/login/login';
 
 
 
@@ -74,6 +75,7 @@ import { LoginComponentPage } from '../pages/login-component/login-component';
 @NgModule({
   declarations: [
     MyApp,
+    LoginPage,
     EntryPage,
     SelectPage,
     TabsPage,
@@ -179,7 +181,8 @@ import { LoginComponentPage } from '../pages/login-component/login-component';
      DatePicker,
     RegisterPage,
     LoginComponentPage, 
-    GlobalCarePage
+    GlobalCarePage, 
+    LoginPage
   ],
   providers: [
     StatusBar,
