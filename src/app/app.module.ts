@@ -52,6 +52,7 @@ import { Welcome1Page } from '../pages/Welcome/welcome1/welcome1';
 import { Welcome2Page } from '../pages/Welcome/welcome2/welcome2';
 import { Welcome3Page } from '../pages/Welcome/welcome3/welcome3';
 import { Home1Page } from '../pages/Home/home1/home1';
+import { SelectfhPage } from '../pages/Home/selectfh/selectfh';
 import { Planning1Page } from '../pages/Home/planning1/planning1';
 import { Planning2Page } from '../pages/Home/planning2/planning2';
 import { Search1Page } from '../pages/Home/search1/search1';
@@ -126,7 +127,8 @@ import { LoginPage } from '../pages/login/login';
      DatePicker,
     RegisterPage,
     LoginComponentPage, 
-    GlobalCarePage
+    GlobalCarePage,
+    SelectfhPage
   ],
   imports: [
     BrowserModule,
@@ -185,7 +187,8 @@ import { LoginPage } from '../pages/login/login';
     RegisterPage,
     LoginComponentPage, 
     GlobalCarePage, 
-    LoginPage
+    LoginPage,
+    SelectfhPage
   ],
   providers: [
     StatusBar,

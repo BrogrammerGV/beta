@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import { Planning2Page } from '../../../pages/Home/planning2/planning2';
+import { SelectfhPage } from '../../../pages/Home/selectfh/selectfh';
 /**
  * Generated class for the Planning1Page page.
  *
@@ -19,7 +19,7 @@ export class Planning1Page {
   }
 
   nextPage(){
-    this.navCtrl.push(Planning2Page, {user: this.navParams.get("user")});
+    this.navCtrl.push(SelectfhPage, {user: this.navParams.get("user")});
   }
 
 }

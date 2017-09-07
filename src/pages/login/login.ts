@@ -7,7 +7,7 @@ import { Storage } from '@ionic/storage';
 
 import { TabsPage } from '../tabs/tabs';
 //import { SignupPage } from '../signup/signup';
-import { Planning2Page } from '../Home/planning2/planning2';
+import { SelectfhPage } from '../Home/selectfh/selectfh';
 import { Search1Page } from '../Home/search1/search1';
 import { SocialSharing } from '@ionic-native/social-sharing';
 
@@ -67,7 +67,7 @@ export class LoginPage {
 
   login() {
     if (this.userName && this.password) {
-      loginCognitoUser(this.userName, this.password)
+      loginCognitoUser(this.userName.toLowerCase(), this.password)
         .then(function (data: any) {
           //console.log(this);
           this.storage.set("authToken", data);
@@ -78,7 +78,7 @@ export class LoginPage {
             }
             else if(this.navParams.get("planningClicked")){
               this.userInfo.first = data[2].Value;
-              this.navCtrl.setRoot(Planning2Page, {user: this.userInfo});
+              this.navCtrl.setRoot(SelectfhPage, {user: this.userInfo});
             }else{
               this.navCtrl.pop();
             }
