@@ -20,8 +20,8 @@ import { CareRegistryListPage } from '../care-registry-list/care-registry-list';
 
 //AWS Functions
 declare let performMetaGet: any;
-
-
+declare let lambda: any;
+declare let AWS: any;
 @IonicPage()
 @Component({
   selector: 'page-event-main2',
@@ -38,7 +38,8 @@ export class EventMainPage2 {
   eventMonth: string;
   funeralHome: string;
   firstName: string;
-
+  eventID: string;
+  isPlanner: boolean;
 
 
   //Bool Checks
@@ -62,7 +63,7 @@ export class EventMainPage2 {
 
 
 
-  public isPlanner: boolean = false;
+
 
 
 
@@ -82,7 +83,16 @@ export class EventMainPage2 {
   ionViewCanEnter() {
 
 this.careCategorySecondary = "Participant";
-console.log("NavigationCheck:" + this.isPlanner)
+
+this.storage.get('guidCreated').then((val) => {
+   this.eventID = val;
+ lambda("CheckIfPlanner",{eventID: this.eventID, userID: AWS.config.credentials.identityId}).then(function(data:any){
+  this.isPlanner = data;
+}.bind(this));
+});
+
+
+
 
        this.storage.get(this.careCategorySecondary + "Shown").then((val) => {
          console.log(val)

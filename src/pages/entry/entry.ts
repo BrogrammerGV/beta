@@ -155,24 +155,6 @@ console.log(x.Item.firstName);
               loading.present();
             }
 
-            // doRefresh(refresher: Refresher) {
-            //   this.confData.getTimeline(this.dayIndex, this.queryText, this.excludeTracks, this.segment).subscribe((data: any) => {
-            //     this.shownSessions = data.shownSessions;
-            //     this.groups = data.groups;
-
-            //     // simulate a network request that would take longer
-            //     // than just pulling from out local json file
-            //     setTimeout(() => {
-            //       refresher.complete();
-
-            //       const toast = this.toastCtrl.create({
-            //         message: 'Sessions have been updated.',
-            //         duration: 3000
-            //       });
-            //       toast.present();
-            //     }, 1000);
-            //   });
-            // }
 
 
   

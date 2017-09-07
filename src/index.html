@@ -64,7 +64,8 @@ function callLambda(http, bodyData){
               else     
               {
            
-                dataJson = JSON.parse(data.Payload);
+                 dataJson = JSON.parse(data.Payload);
+                 //console.log(data.Payload)
               //console.log(data.Payload);   
               // console.log("PayloadCheck:" + dataJson);
               
@@ -166,7 +167,7 @@ function lambda(lambdaFunc, bodyData){
    lambda.invoke(params, function(err, data) {
    if (err) {
      reject(err);
-   }
+   }             
    else     
    {
      resolve(JSON.parse(data.Payload));   

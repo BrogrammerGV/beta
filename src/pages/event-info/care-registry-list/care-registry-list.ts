@@ -80,7 +80,7 @@ export class CareRegistryListPage {
   public eventClicked: boolean = false;
   public event: any;
   public eventID: string = "";
-  public isPlanner: boolean = false;
+  public isPlanner: boolean;
   public comment: string = "";
   public phoneNum: string = "";
   public deceasedFirst: string = "";
@@ -96,8 +96,6 @@ export class CareRegistryListPage {
     ionViewDidLoad() {
     
 
-
-console.log("NavigationCheck:" + this.isPlanner)
 
         this.slides.lockSwipes(true);
         this.footerSlide.lockSwipes(true);
