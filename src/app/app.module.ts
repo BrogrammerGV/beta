@@ -28,6 +28,7 @@ import { EntryPage } from '../pages/entry/entry';
 import { SelectPage } from '../pages/select/select';
 import { TabsPage } from '../pages/tabs/tabs';
 
+
 import { CulturePage } from '../pages/culture/culture';
 import { InfoNamePage } from '../pages/info/info-name/info-name';
 import { InfoBirthPage } from '../pages/info/info-birth/info-birth';
@@ -135,7 +136,7 @@ import { LoginPage } from '../pages/login/login';
     GlobalCarePage,
     AdminLoginPage, 
     AdminManagerPage,
-    AdminAddPage
+    AdminAddPage, EntryPage
   ],
   imports: [
     BrowserModule,
@@ -197,7 +198,7 @@ import { LoginPage } from '../pages/login/login';
     LoginPage,
     AdminLoginPage, 
      AdminManagerPage, 
-     AdminAddPage
+     AdminAddPage, EntryPage
   ],
   providers: [
     StatusBar,

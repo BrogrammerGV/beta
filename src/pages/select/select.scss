@@ -206,38 +206,40 @@ color: #4A4A4A;
 
 
 .tileOne {
-width: 100% ;
 
-padding: 45% 0 60% 0 !important;
-margin:auto;
-background: url('../assets/img/info/Tile.png') 60% 80% no-repeat ;
+height:100%;
+  background: url('../assets/img/care/meals.png') no-repeat;
+  background-size: 100%;
+
 }
 
 
-.tileTwo {
-width: 100% ;
+.h2Override{
+  margin-top: 0;
+  margin-bottom:0;
+}
 
-padding: 45% 0 60% 0 !important;
-margin:auto;
-background: url('../assets/img/info/tile2.png') 50% 60% no-repeat ;
+.tileTwo {
+
+  height:100%;
+background: url('../assets/img/info/tile2.png')  no-repeat;
+background-size: 100%;
 }
 
 
 .tileThree {
-width: 100% ;
 
-padding: 45% 0 60% 0 !important;
-margin:auto;
-background: url('../assets/img/info/tileThree.png') 50% 60% no-repeat ;
+  height:100%;
+background: url('../assets/img/info/tileThree.png') no-repeat ;
+background-size: 100%;
 }
 
 
 .tileFour {
-width: 100% ;
 
-padding: 45% 0 60% 0 !important;
-margin:auto;
-background: url('../assets/img/info/tileFour.png') 60% 80% no-repeat ;
+  height:100%;
+background: url('../assets/img/info/tileFour.png') no-repeat ;
+background-size: 100%;
 }
 
 
@@ -299,30 +301,26 @@ background: url('../assets/img/care/support.png') 60% 80% no-repeat ;
 
 .tileText
 {
-  position: relative;
-  top: -20px;
-  left: -0px;
+  position: absolute;
+  top: -10px;
   text-align:left;
 }
 .tileTextAbout
 {
-  position: relative;
-  top: -35px;
-  left: -25px;
+  position: absolute;
+  top: -10px;
   text-align:left;
 }
 .tileTextWork
 {
-  position: relative;
-  top: -20px;
-  left: 2px;
+  position: absolute;
+  top: -10px;
   text-align:left;
 }
 .tileTextLife
 {
-  position: relative;
-  top: -30px;
-  left: -15px;
+  position: absolute;
+  top: -10px;
   text-align:left;
 }
 
@@ -331,7 +329,7 @@ background: url('../assets/img/care/support.png') 60% 80% no-repeat ;
 .tileTextMeals
 {
   position: relative;
-  top: -2.5em ;
+  top: 0px;
 padding-left: 4px;
 
 

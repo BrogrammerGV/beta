@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Calendar } from '@ionic-native/calendar';
 
+import { EntryPage } from '../../entry/entry';
 
 /**
  * Generated class for the EventInfoOnePage page.
@@ -115,7 +116,7 @@ export class EventInfoOnePage {
   }
 
   goToObit() {
-   
+   this.navCtrl.push(EntryPage)
   }
 
   goToCare(){
