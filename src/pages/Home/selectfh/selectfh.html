@@ -15,8 +15,8 @@
   
   
   <ion-content>
-    <div style=" width: 100%; background-color: #FFFFFF; padding: 10px">
-      <div style="width: 100%;">
+    <div style=" width: 100%; height: 100%; background-color: #FFFFFF; padding: 10px">
+      <div style="width: 100%">
         <input type="text" placeholder="Type here" required class="inputField" style="width: 83%" [(ngModel)]="searchText" value="{{searchText}}"
         />
         <div class="inputField" style="border: 0; background-color: #E6785A; border-radius: 3px; float: right; position:relative; width: 15%" (click)="doSearch()">
@@ -24,37 +24,14 @@
       </div>
       <div *ngIf="noResults" class="noResults">Sorry, we were unable to find any matching records.</div>
       <div *ngIf="!searched" class="noResults">To begin, please search for your funeral provider by entering their name or zip code.</div>
-      <div style="overflow: auto">
-      <div class="cardStyle" style="display: flex; margin: 5px; height: 8em" *ngFor="let item of searchResults" (click)="openEvent(item)">
-          <div style="width: 100%; margin: auto; text-align: left; padding-left: 10px">
-            <div><span class="searchMainFont">{{item.firstName.S}} {{item.lastName.S}}</span></div><div><span class="searchSubFont">{{item.city.S}}, {{item.state.S}}</span></div>
-          </div>
-        </div>
-            <div class="cardStyle" style="display: flex; margin: 5px; height: 8em" (click)="openEvent(item)">
-                <div style="width: 66%; text-align: left; padding-left: 10px; position: relative">
-                  <div style="position: absolute; top: 0px; left: 10px"><span class="searchMainFont">Smith Funeral & Cremation Services</span></div><div style="position: absolute; bottom: 0px; left: 10px"><span class="searchSubFont">Maryville, Tennessee</span></div>
-                </div>
-                <div style="width: 33%; float: right; display: flex"><img src="assets/img/arrow.png" style="height: 15px; margin: auto; margin-right: 0px" /></div>
+      <div style="overflow-y: scroll; height: 100%; width: 100%;">
+          <div class="cardStyle" style="display: flex; margin: 5px; height: 8em" *ngFor="let item of filteredResults" (click)="openEvent(item)">
+              <div style="width: 66%; text-align: left; padding-left: 10px; position: relative">
+                <div style="position: absolute; top: 0px; left: 10px"><span class="searchMainFont">{{item.fhName.S}}</span></div><div style="position: absolute; bottom: 0px; left: 10px"><span class="searchSubFont">{{item.fhCity.S}}, {{item.fhState.S}}</span></div>
               </div>
-              <div class="cardStyle" style="display: flex; margin: 5px; height: 8em" (click)="openEvent(item)">
-                  <div style="width: 66%; text-align: left; padding-left: 10px; position: relative">
-                    <div style="position: absolute; top: 0px; left: 10px"><span class="searchMainFont">Smith Funeral & Cremation Services</span></div><div style="position: absolute; bottom: 0px; left: 10px"><span class="searchSubFont">Maryville, Tennessee</span></div>
-                  </div>
-                  <div style="width: 33%; float: right; display: flex"><img src="assets/img/arrow.png" style="height: 15px; margin: auto; margin-right: 0px" /></div>
-                </div>
-                <div class="cardStyle" style="display: flex; margin: 5px; height: 8em" (click)="openEvent(item)">
-                    <div style="width: 66%; text-align: left; padding-left: 10px; position: relative">
-                      <div style="position: absolute; top: 0px; left: 10px"><span class="searchMainFont">Smith Funeral & Cremation Services</span></div><div style="position: absolute; bottom: 0px; left: 10px"><span class="searchSubFont">Maryville, Tennessee</span></div>
-                    </div>
-                    <div style="width: 33%; float: right; display: flex"><img src="assets/img/arrow.png" style="height: 15px; margin: auto; margin-right: 0px" /></div>
-                  </div>
-                  <div class="cardStyle" style="display: flex; margin: 5px; height: 8em" (click)="openEvent(item)">
-                      <div style="width: 66%; text-align: left; padding-left: 10px; position: relative">
-                        <div style="position: absolute; top: 0px; left: 10px"><span class="searchMainFont">Smith Funeral & Cremation Services</span></div><div style="position: absolute; bottom: 0px; left: 10px"><span class="searchSubFont">Maryville, Tennessee</span></div>
-                      </div>
-                      <div style="width: 33%; float: right; display: flex"><img src="assets/img/arrow.png" style="height: 15px; margin: auto; margin-right: 0px" /></div>
-                    </div>
-                  </div>
+              <div style="width: 33%; float: right; display: flex"><img src="assets/img/arrow.png" style="height: 15px; margin: auto; margin-right: 0px" /></div>
+            </div>
+    </div>
     </div>
   
   </ion-content>

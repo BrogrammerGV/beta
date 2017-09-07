@@ -55,6 +55,14 @@ export class Search1Page {
       console.log(x[i]);
       this.searchResults.push(x[i]);
     }
+
+    this.searchResults = this.searchResults.sort(function(a: any,b: any){
+      if(a.fhName.S < b.fhName.S){
+        return -1;
+      }else{
+        return 1;
+      }
+    });
   
     this.noResults = !x.length;
   }

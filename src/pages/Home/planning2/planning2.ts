@@ -27,6 +27,6 @@ export class Planning2Page {
   }
 
   nextPage(){
-    this.navCtrl.parent.parent.setRoot(SelectPage);
+    this.navCtrl.parent.parent.setRoot(SelectPage, {fhID: this.navParams.get("fhID")});
   }
 }
