@@ -62,6 +62,7 @@ export class SelectfhPage {
               return 1;
             }
           });
+          this.noResults = !this.filteredResults.length;
   
         }.bind(this));
       }else{//search name
@@ -74,6 +75,7 @@ export class SelectfhPage {
             return 1;
           }
         });
+        this.noResults = !this.filteredResults.length;
       }
     }
   
