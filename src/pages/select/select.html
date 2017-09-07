@@ -58,7 +58,7 @@
 
     <ion-col style="height: 11em;"  col-6>
 <!--Logic Will Need Reworked for next Pages-->
-   <button (click)="goToAbout()" ion-button full class="tileOne">
+   <button (click)="goToAbout()" style="width: 100%; height: 100%; position: relative; color: #FFFFFF" class="tileOne">
     
      <h2  *ngIf="!servicesFinished && readyButtonText != 'Continue'" class="tileTextAbout">About</h2> 
      <ion-icon style="font-size: 90px" *ngIf="readyButtonText == 'Continue' ||  servicesFinished" name="checkmark"> </ion-icon>
@@ -70,7 +70,7 @@
 
     <ion-col style="height: 11em;" col-6>
 
-     <button  (click)="goToEdu()" ion-button full class="tileTwo">
+     <button  (click)="goToEdu()" style="width: 100%; height: 100%; position: relative; color: #FFFFFF" class="tileTwo">
        <h2 *ngIf="!servicesFinished && (!militaryFinished  && !cultureFinished)" class="tileTextWork">Education<br />and Work <br />Experience</h2>
        <ion-icon style="font-size: 90px" *ngIf="readyButtonText == 'Continue' && (militaryFinished || cultureFinished) || servicesFinished" name="checkmark"> </ion-icon>
     </button>
@@ -83,7 +83,7 @@
     <ion-col style="height: 11em;" col-6>
 
 
-   <button   (click)="goToCulture()" ion-button full class="tileThree">
+   <button   (click)="goToCulture()" style="width: 100%; height: 100%; position: relative; color: #FFFFFF" class="tileThree">
      <h2 *ngIf="!servicesFinished && (!cultureFinished || militaryFinished)"  class="tileTextLife"> Culture<br />and Life </h2> 
       <ion-icon style="font-size: 90px" *ngIf="readyButtonText == 'Continue' && (!militaryFinished && cultureFinished) || servicesFinished" name="checkmark"> </ion-icon>
      </button>
@@ -96,7 +96,7 @@
 
 
 
-   <button   (click)="gotToServ()" ion-button full class="tileFour">
+   <button   (click)="gotToServ()" style="width: 100%; height: 100%; position: relative; color: #FFFFFF" class="tileFour">
      <h2 *ngIf="!servicesFinished"  class="tileText">Services<br />and<br /> Memorials </h2>
       <ion-icon style="font-size: 90px" *ngIf="readyButtonText == 'Submit' || servicesFinished" name="checkmark"> </ion-icon>
      </button>
