@@ -92,7 +92,7 @@ export class SelectfhPage {
   
    openEvent(item:any)
   {
-    this.navCtrl.push(Planning2Page,{fhID: item.fhID.S});
+    this.navCtrl.push(Planning2Page,{fhID: item.fhID.S, user: this.navParams.get("user")});
   }
 
   calculateDistance(lat1: number, lon1: number, lat2: number, lon2: number){
