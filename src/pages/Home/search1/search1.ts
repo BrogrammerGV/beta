@@ -57,7 +57,7 @@ export class Search1Page {
     }
 
     this.searchResults = this.searchResults.sort(function(a: any,b: any){
-      if(a.fhName.S < b.fhName.S){
+      if(a.firstName.S < b.firstName.S){
         return -1;
       }else{
         return 1;

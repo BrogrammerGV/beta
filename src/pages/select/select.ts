@@ -6,6 +6,7 @@ import {
   ActionSheetController,
   Config,
   NavController,
+  NavParams,
   ModalController,
   AlertController
 } from 'ionic-angular';
@@ -130,7 +131,7 @@ state: string;
     private storage: Storage,
     public modalCtrl: ModalController,
     public alertCtrl: AlertController,
-
+    public navParams: NavParams
   ) { }
 
   ionViewCanEnter() {
@@ -429,8 +430,6 @@ state: string;
     // this.storage.get('state').then((val) => {
     //   this.state = val;
     // });
-this.city = "Azle"
-this.state = "Texas"
 
   }
 
@@ -448,11 +447,8 @@ this.state = "Texas"
   goToConfirm() {
 
     var jsonArr = "{";
-this.city = "Azle";
-this.state = "Texas";
 
     this.storage.forEach((value, key, index) => {
-      console.log('"' + key + '":"' + value + '",');
       jsonArr = jsonArr + '"' + key + '":"' + value + '",';
     }).then(function () {
       jsonArr = jsonArr.substring(0, jsonArr.length - 1);
@@ -462,15 +458,14 @@ this.state = "Texas";
 
       //callLambda("POST", jsonArr);
 
-      console.log(jsonArr);
       lambda("EventAppLambda", { data: jsonArr, key: this.eventID, httpMethod: "POST" }
       ).then(function (data: any) {
         //console.log(this);
-        console.log(data);
       }.bind(this));
 
     }.bind(this))
 
+    this.updateEventInfo();
   }
 
 
@@ -485,7 +480,6 @@ this.updateEventInfo();
     lambda("EventAppLambda", { key: 'guid3', httpMethod: "GET" }
   ).then(function (data: any) {
     data = JSON.parse(data)
-    console.log(data.firstName);
   }.bind(this));
   }
 
@@ -531,7 +525,6 @@ this.updateEventInfo();
     }
   ).then(function (data: any) {
     //console.log(this);
-    console.log(data);
   }.bind(this));
 
   }
@@ -573,13 +566,16 @@ gotToServ()
 
 updateEventInfo()
 { 
-console.log("eventID:" + this.eventID)
-console.log("eventID:" + credentials.identityId.toString())
-console.log("eventID:" + this.firstName)
-console.log("eventID:" + this.lastName)
-console.log("eventID:" + this.city)
-console.log("eventID:" + this.state)
+  console.log("eventID:" + this.eventID)
+  console.log("eventID:" + credentials.identityId.toString())
+  console.log("eventID:" + this.firstName)
+  console.log("eventID:" + this.lastName)
+  console.log("eventID:" + this.city)
+  console.log("eventID:" + this.state)
 
+  if(!this.city){this.city = "n/a";}
+  if(!this.state){this.state = "n/a";}
+  console.log(this.navParams.get("fhID"));
   lambda("PutPostScriptMetadata", { 
   
    key: this.eventID, 
@@ -587,12 +583,15 @@ console.log("eventID:" + this.state)
    firstName: this.firstName, 
    lastName: this.lastName, 
    city: this.city,
-   state: this.state
-   
+   state: this.state,
+   fhID: this.navParams.get("fhID")
  }
 ).then(function (data: any) {
  //console.log(this);
  console.log(data);
+}.bind(this))
+.catch(function(err: any){
+  console.log(err);
 }.bind(this));
 
 }

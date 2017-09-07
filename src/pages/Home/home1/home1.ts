@@ -5,7 +5,7 @@ import { AlertController } from 'ionic-angular';
 
 import { LoginPage } from '../../../pages/login/login';
 import { Planning1Page } from '../../../pages/Home/planning1/planning1';
-import { Planning2Page } from '../../../pages/Home/planning2/planning2';
+import { SelectfhPage } from '../../../pages/Home/selectfh/selectfh';
 import { Search1Page } from '../../../pages/Home/search1/search1';
 import { AdminLoginPage } from '../../../pages/admin/admin-login/admin-login';
 import { AdminManagerPage } from '../../../pages/admin/admin-manager/admin-manager';
@@ -58,7 +58,7 @@ export class Home1Page {
   planning(){
     cognitoHelper("attr").then(function(data:any){
       this.userInfo.first = data[2].Value;
-      this.navCtrl.setRoot(Planning2Page, {user: this.userInfo});
+      this.navCtrl.setRoot(SelectfhPage, {user: this.userInfo});
     }.bind(this))
     .catch(function(data:any){
       this.buttonClicked = true;
