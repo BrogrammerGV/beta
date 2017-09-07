@@ -18,9 +18,16 @@ import { MediaCapture, MediaFile, CaptureError, CaptureImageOptions } from '@ion
 import { MyApp } from './app.component';
 
 //Custom Pages: CJM 08/03/2017
+//admin WebPage
+import { AdminLoginPage } from '../pages/admin/admin-login/admin-login';
+import { AdminManagerPage } from '../pages/admin/admin-manager/admin-manager';
+import { AdminAddPage } from '../pages/admin/admin-add/admin-add';
+
+
 import { EntryPage } from '../pages/entry/entry';
 import { SelectPage } from '../pages/select/select';
 import { TabsPage } from '../pages/tabs/tabs';
+
 
 import { CulturePage } from '../pages/culture/culture';
 import { InfoNamePage } from '../pages/info/info-name/info-name';
@@ -128,6 +135,10 @@ import { LoginPage } from '../pages/login/login';
     RegisterPage,
     LoginComponentPage, 
     GlobalCarePage,
+    AdminLoginPage, 
+    AdminManagerPage,
+    AdminAddPage, 
+    EntryPage,
     SelectfhPage
   ],
   imports: [
@@ -188,6 +199,10 @@ import { LoginPage } from '../pages/login/login';
     LoginComponentPage, 
     GlobalCarePage, 
     LoginPage,
+    AdminLoginPage, 
+    AdminManagerPage, 
+    AdminAddPage, 
+    EntryPage,
     SelectfhPage
   ],
   providers: [
