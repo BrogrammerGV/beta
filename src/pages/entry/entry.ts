@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import {Storage} from '@ionic/storage';
-import { AlertController, App, FabContainer, ItemSliding, List, ModalController, NavController, ToastController, LoadingController, Refresher } from 'ionic-angular';
+import { NavParams, AlertController, App, FabContainer, ItemSliding, List, ModalController, NavController, ToastController, LoadingController, Refresher } from 'ionic-angular';
 
 /*
   To learn how to use third party libs in an
@@ -12,11 +12,12 @@ import {SelectPage} from '../select/select';
 
 import { EventInfoOnePage } from '../event-info/event-info-one/event-info-one';
 import { EventMainPage } from '../event-info/event-main/event-main';
+import { EventMainPage2 } from '../event-info/event-main2/event-main2';
 
 //AWS Functions
 declare let performMetaGet: any;
-
-
+declare let lambda : any;
+declare let AWS : any;
 
 @Component({
   selector: 'page-schedule',
@@ -44,7 +45,11 @@ eventTime: string;
 eventDate: string;
 eventMonth: string;
 funeralHome: string;
+obit: string;
 
+//PAGE Nav Vars
+eventID: any;
+imgURL: any;
 
 
 
@@ -57,14 +62,19 @@ funeralHome: string;
     public modalCtrl: ModalController,
     public navCtrl: NavController,
     public toastCtrl: ToastController,
-    private storage: Storage
+    private storage: Storage, 
+    public navParams: NavParams
   ) {}
 
   ionViewDidLoad() {
-    this.app.setTitle('PostScript');
-    this.doSearch();
-   
+
+    this.eventID = this.navParams.get("eventID");
+
+//temp
+this.imgURL = "assets/img/Obiticon.png"
+    this.doSearch(this.eventID);
   }
+   
 
     
         goToCollector()
@@ -96,9 +106,9 @@ funeralHome: string;
           }
 
 
- doSearch(){
+ doSearch(eventID){
 
-    performMetaGet({"eventID": "guidstuff3"
+    performMetaGet({"eventID": eventID
     }).then(function(data: any){
  
       this.logItem(data);
@@ -110,8 +120,7 @@ funeralHome: string;
 
 goNext()
 {
-  //this.navCtrl.push(EventInfoOnePage);
-  this.navCtrl.push(EventMainPage);
+  this.navCtrl.pop();
 }
 
 
@@ -124,6 +133,7 @@ console.log(x.Item.firstName);
    this.eventTime = x.Item.eventTime.S;
    this.funeralHome = x.Item.funeralHome.S;
    this.eventMonth = x.Item.eventMonth.S;
+   this.obit = x.Item.obit.S;
 
    
     // for (var i = 0; i < x.length; i++) {

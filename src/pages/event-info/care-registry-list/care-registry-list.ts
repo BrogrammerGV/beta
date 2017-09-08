@@ -80,7 +80,7 @@ export class CareRegistryListPage {
   public eventClicked: boolean = false;
   public event: any;
   public eventID: string = "";
-  public isPlanner: boolean;
+  public isPlanner: boolean = false;;
   public comment: string = "";
   public phoneNum: string = "";
   public deceasedFirst: string = "";
@@ -299,10 +299,9 @@ export class CareRegistryListPage {
     }
 
   getData(){
-    var event: string = this.navParams.get("eventID");
-    if (!event){event = "guidstuff";}
-    this.eventID = event;
-    lambda("GetPostScriptCareRegistry",{eventID: event, careCategory: this.careCategory})
+   this.eventID = this.navParams.get("eventID");
+   console.log(this.eventID)
+    lambda("GetPostScriptCareRegistry",{eventID: this.eventID, careCategory: this.careCategory})
     .then(function(data: any){
       //console.log(this);
       this.showItems(data);

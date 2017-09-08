@@ -3,7 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Calendar } from '@ionic-native/calendar';
 
 import { EntryPage } from '../../entry/entry';
-
+import { CareRegistryListPage } from '../care-registry-list/care-registry-list';
+import { EventMainPage3 } from '../../event-info/event-main3/event-main3';
 /**
  * Generated class for the EventInfoOnePage page.
  *
@@ -36,6 +37,16 @@ export class EventInfoOnePage {
   eventDate: string;
   eventMonth: string;
   funeralHome: string;
+  welcomeMessage: string;
+  obitShort: string;
+
+  //Page NAv Vars
+eventID: any;
+
+eventTimeOne = new Date();
+eventTimeTwo = new Date();
+eventTimeThree = new Date();
+
 
 
 
@@ -44,39 +55,37 @@ export class EventInfoOnePage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad EventInfoOnePage');
-    this.doSearch();
+    this.eventID = this.navParams.get("guid");
+    this.doSearch(this.eventID);
+
+
+
+    //to load from dynamo
+
   }
 
 
 
 
   calendarUpdate() {
-    var startDate = new Date("August 23, 2016 7:00:00");
-    var endDate = new Date("August 23, 2016 9:00:00");
+ 
     var eventDetails = this.firstName + "'s ";
 
     this.calendar.createEventInteractivelyWithOptions(eventDetails + "Private Family Viewing", this.funeralHome,
-      "We are testing this functionality", startDate, endDate,{calendarName: "Home"})
+      "", this.eventTimeOne, this.eventTimeOne,{calendarName: "Home"})
 
       .then(function (data: any) { }.bind(this))
       .catch(function (data: any) { }.bind(this))
       .then(function (data: any) {
 
-        var startDate = new Date("August 24, 2016 4:00:00");
-        var endDate = new Date("August 24, 2016 8:00:00");
-
         this.calendar.createEventInteractivelyWithOptions(eventDetails + "Public Visitation", this.funeralHome,
-          "We are testing this functionality", startDate, endDate,{calendarName: "Home"})
+          "", this.eventTimeTwo, this.eventTimeTwo,{calendarName: "Home"})
           .then(function (data: any) { }.bind(this))
           .catch(function (data: any) { }.bind(this))
           .then(function (data: any) {
 
-            var startDate = new Date("August 25, 2016 10:30:00");
-            var endDate = new Date("August 25, 2016 12:00:00");
-
             this.calendar.createEventInteractivelyWithOptions(eventDetails + "Funeral Service", this.funeralHome,
-              "We are testing this functionality", startDate, endDate, {calendarName: "Home"})
-
+              "", this.eventTimeThree, this.eventTimeThree, {calendarName: "Home"})
               .then(function (data: any) { }.bind(this))
               .catch(function (data: any) { }.bind(this))
               .then(function (data: any) {
@@ -86,10 +95,10 @@ export class EventInfoOnePage {
       }.bind(this));
   }
 
-  doSearch() {
+  doSearch(eventID) {
     //this is where we pick a guid to search
     performMetaGet({
-      "eventID": "guidstuff3"
+      "eventID": eventID
     }).then(function (data: any) {
       //console.log(this);
       //console.log(data);
@@ -110,19 +119,26 @@ export class EventInfoOnePage {
     this.eventTime = x.Item.eventTime.S;
     this.funeralHome = x.Item.funeralHome.S;
     this.eventMonth = x.Item.eventMonth.S;
+    this.welcomeMessage = x.Item.welcomeMessage.S;
+this.obitShort = x.Item.obit.S
+this.obitShort = this.obitShort.substring(0,25);
 
 
 
   }
 
   goToObit() {
-   this.navCtrl.push(EntryPage)
+   this.navCtrl.push(EntryPage, {"eventID": this.eventID})
   }
 
   goToCare(){
-    
+    this.navCtrl.push(CareRegistryListPage, {"eventID": this.eventID})
   }
 
+  goToCondol()
+  {
+    this.navCtrl.push(EventMainPage3, {"eventID": this.eventID})
+  }
 
 
   expandHeader() {

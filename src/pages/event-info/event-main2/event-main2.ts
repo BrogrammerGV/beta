@@ -59,7 +59,6 @@ export class EventMainPage2 {
   //CareRegistry Add Item Variables:
   careCategory: any;
   careCategorySecondary: any;
-  eventGuid: string;
 
 
 
@@ -83,14 +82,6 @@ export class EventMainPage2 {
   ionViewCanEnter() {
 
 this.careCategorySecondary = "Participant";
-
-this.storage.get('guidCreated').then((val) => {
-   this.eventID = val;
- lambda("CheckIfPlanner",{eventID: this.eventID, userID: AWS.config.credentials.identityId}).then(function(data:any){
-  this.isPlanner = data;
-}.bind(this));
-});
-
 
 
 
@@ -128,11 +119,16 @@ this.storage.get('guidCreated').then((val) => {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad EventMainPage2');
-    this.storage.get('guid').then((val) => {
-      console.log('Guid:', val);
-      this.doSearch(val);
-      this.eventGuid = val;
-    });
+
+    this.eventID = this.navParams.get("eventID");
+    lambda("CheckIfPlanner",{eventID: this.eventID, userID: AWS.config.credentials.identityId}).then(function(data:any){
+     this.isPlanner = data;
+     this.doSearch(this.eventID);
+     console.log('Guid:', this.eventID);
+   }.bind(this));
+   
+
+
 
 
   }
@@ -201,14 +197,14 @@ goBackParticipant()
   goToEvents() {
     let dataPass;
     dataPass = {
-      eventGuid: this.eventGuid,
+      eventID: this.eventID,
       pageBool: "N",
       careCategory: 'Meals',
       firstName: this.firstName
     }
     this.storage.set('straightToAddItem', "N");
     this.careCategory = "Meals"
-    console.log(this.eventGuid + " " + this.careCategory);
+    console.log(this.eventID + " " + this.careCategory);
 
 
     this.navCtrl.push(CareRegistryListPage, dataPass);
@@ -221,14 +217,14 @@ goBackParticipant()
   goToTransportation() {
     let dataPass;
     dataPass = {
-      eventGuid: this.eventGuid,
+      eventID: this.eventID,
       pageBool: "N",
       careCategory: 'Transportation',
       firstName: this.firstName
     }
     this.storage.set('straightToAddItem', "N");
     this.careCategory = "Transportation"
-    console.log(this.eventGuid + " " + this.careCategory);
+    console.log(this.eventID + " " + this.careCategory);
 
 
     this.navCtrl.push(CareRegistryListPage, dataPass);
@@ -237,14 +233,14 @@ goBackParticipant()
   goToHousehold() {
     let dataPass;
     dataPass = {
-      eventGuid: this.eventGuid,
+      eventID: this.eventID,
       pageBool: "N",
       careCategory: 'Household',
       firstName: this.firstName
     }
     this.storage.set('straightToAddItem', "N");
     this.careCategory = "Household"
-    console.log(this.eventGuid + " " + this.careCategory);
+    console.log(this.eventID + " " + this.careCategory);
 
 
     this.navCtrl.push(CareRegistryListPage, dataPass);
@@ -253,14 +249,14 @@ goBackParticipant()
   goToMisc() {
     let dataPass;
     dataPass = {
-      eventGuid: this.eventGuid,
+      eventID: this.eventID,
       pageBool: "N",
       careCategory: 'Misc',
       firstName: this.firstName
     }
     this.storage.set('straightToAddItem', "N");
     this.careCategory = "Misc"
-    console.log(this.eventGuid + " " + this.careCategory);
+    console.log(this.eventID + " " + this.careCategory);
 
 
     this.navCtrl.push(CareRegistryListPage, dataPass);
@@ -317,7 +313,7 @@ goBackParticipant()
 
     if (this.careCategory) {
       dataPass = {
-        eventGuid: this.eventGuid,
+        eventID: this.eventID,
         pageBool: "Y",
         careCategory: this.careCategory
       }
@@ -325,13 +321,13 @@ goBackParticipant()
     }
     else {
       dataPass = {
-        eventGuid: this.eventGuid,
+        eventID: this.eventID,
         pageBool: "N",
         careCategory: "Meals"
       }
       this.storage.set('straightToAddItem', "N");
     }
-    console.log(this.eventGuid + " " + this.careCategory);
+    console.log(this.eventID + " " + this.careCategory);
     this.navCtrl.push(CareRegistryListPage, dataPass);
   }
 

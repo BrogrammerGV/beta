@@ -35,7 +35,7 @@
 
     <span style="font-size: .8em; opacity: 1;"> <i>A Message from {{firstName}}'s Family</i></span>
  <br /> 
-    <span style="font-size: .8em; opacity: 1;"> <b> Thank you for supporting our family during this difficult time. We appreciate your condolences and invite you to join us as we celelbrate {{nameToUse}}'s Life.</b></span>
+    <span style="font-size: .8em; opacity: 1;"> <b> {{welcomeMessage}}</b></span>
 
 </div>
 
@@ -44,11 +44,11 @@
     <span style="font-size: .8em; opacity: 1;"> <b>Schedule of Events</b></span>
  <ul style="margin-top: -3px; list-style-type: square;">
    <li style="color: #E6785A">
-    <span style="font-size: .8em; opacity: 1; color: #ffffff;"> <b> 8/23 7 p.m. </b>| Private Family Viewing</span></li>
+    <span style="font-size: .8em; opacity: 1; color: #ffffff;"> <b> {{eventTimeOne | date :"M/d h:mm a"}} </b>| Private Family Viewing</span></li>
   <li style="color: #E6785A">
-    <span style="font-size: .8em; opacity: 1; color: #ffffff;"> <b> 8/24 4-8 p.m. </b>| Public Visitation</span></li>
+    <span style="font-size: .8em; opacity: 1; color: #ffffff;"> <b> {{eventTimeTwo | date :"M/d h:mm a" }} </b>| Public Visitation</span></li>
 
-    <li style="color: #E6785A"><span style="font-size: .8em; opacity: 1; color: #ffffff;"> <b> 8/25 10:30 a.m.. </b>| Funeral Service, Internment and Luncheon to Follow</span></li>
+    <li style="color: #E6785A"><span style="font-size: .8em; opacity: 1; color: #ffffff;"> <b> {{eventTimeThree | date :"M/d h:mm a" }} </b>| Funeral Service, Internment and Luncheon to Follow</span></li>
 </ul>
 
 </div>
@@ -106,7 +106,7 @@
 
   </div>
   <div style="margin-right: 8px; margin-left: 8px; width:90%; padding-top: 3px; " class="row">
- <span style="font-size: 1.0em; color:#686C71"> {{firstName}}, age 43 passed away on Sunday July, 9, 2017, at his home surrounded 
+ <span style="font-size: 1.0em; color:#686C71"> {{obitShort}}
    <a (click)="goToObit()" >...Read More
       
    </a>
@@ -121,11 +121,11 @@
 <div class="row">
 
 <div style="border-right: thin solid #E6785A; padding-right: 5%; padding-left:5%;" class="col">
-   <img style="height: 80px; " src="assets/img/feed.png" />
+   <img (click)="goToCondol()" style="height: 80px; " src="assets/img/feed.png" />
 </div>
 
   <div style="border-right: thin solid #E6785A; margin-left: 10%; padding-right:5%; " class="col">
-    <img style="height: 80px; " src="assets/img/care.png" />
+    <img (click)="goToCare()" style="height: 80px; " src="assets/img/care.png" />
 </div>
 
 <div style="padding-left: 10%;" class="col">
