@@ -203,7 +203,7 @@ export class CareRegistryListPage {
     }
 
     addCareItem(){
-      console.log("addcareitem");
+
       var itemSubName: string = 'n/a';
       var additionalInstructions:string = 'n/a';
       var dateNeeded: string = 'n/a';
