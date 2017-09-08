@@ -73,6 +73,9 @@ export class EventMainPage3 {
       this.getCondolences();
     });
 
+    this.eventHandler.unsubscribe("goToLogin");
+    this.eventHandler.unsubscribe("registered");
+    this.eventHandler.unsubscribe("loggedIn");
     this.eventHandler.subscribe("goToLogin",(data:any)=>{this.moveSlides(4);});
     this.eventHandler.subscribe("registered",(data:any)=>{this.moveSlides(3);});
     this.eventHandler.subscribe("loggedIn",(data:any)=>{this.moveSlides(5);});
@@ -237,7 +240,7 @@ export class EventMainPage3 {
   }
 
   addPhoto(){
-    let alert = this.alertCtrl.create({
+    let alert1 = this.alertCtrl.create({
       title: 'Add or Upload Photo',
       buttons: [
         {
@@ -296,11 +299,11 @@ export class EventMainPage3 {
         }
       ]
     });
-    alert.present();
+    alert1.present();
   }
 
   addVideo(){
-    let alert = this.alertCtrl.create({
+    let alert1 = this.alertCtrl.create({
       title: 'Add or Upload Video',
       buttons: [
         {
@@ -346,7 +349,7 @@ export class EventMainPage3 {
         }
       ]
     });
-    alert.present();
+    alert1.present();
   }
 
   clearPhotoVideo(){
