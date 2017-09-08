@@ -18,7 +18,8 @@ import { Http } from '@angular/http';
 
 //AWS Functions
 declare let performMetaGet: any;
-
+declare let lambda: any;
+declare let AWS: any;
 
 @IonicPage()
 @Component({
@@ -36,7 +37,7 @@ eventDate: string;
 eventMonth: string;
 funeralHome: string;
 firstName: string;
-
+isPlanner: boolean = false;
 
 //Bool Checks
 showEditScreen : boolean = false;
@@ -52,6 +53,10 @@ helperText2: string;
 greetingText: string;
 messageText: string;
 emailAddressSendInvite: string;
+
+//Dynamic Variables 
+//Variables for Data Load
+eventID: string;
 
 
 //Email Variables:
@@ -76,10 +81,20 @@ plannerLastName: string;
   ionViewDidLoad() {
     console.log('ionViewDidLoad EventMainPage');
   
-  this.storage.get('guid').then((val) => {
-    console.log('Guid:', val);
-    this.doSearch(val);
-  });
+this.eventID = this.navParams.get("guid");
+
+console.log(this.eventID)
+    lambda("CheckIfPlanner",{eventID: this.eventID, userID: AWS.config.credentials.identityId}).then(function(data:any){
+        this.isPlanner = data;
+     if(!this.isPlanner)
+      this.navCtrl.push(EventInfoOnePage, { "eventID": this.eventID})
+
+     console.log(this.isPlanner); 
+     this.doSearch(this.eventID);
+   }.bind(this));
+  
+
+  
  
             
    
@@ -143,12 +158,12 @@ saveEditText()
 
 
 goToCare(){
-  this.navCtrl.setRoot(EventMainPage2);
+  this.navCtrl.setRoot(EventMainPage2, {"eventID" : this.eventID});
 }
 
 goToFeed()
 {
-  this.navCtrl.setRoot(EventMainPage3);
+  this.navCtrl.setRoot(EventMainPage3, {"eventID" : this.eventID});
 }
 
 
@@ -263,7 +278,10 @@ if(this.emailAddressSendInvite && re.test(this.emailAddressSendInvite))
 
     }
 
-
+goToEvents()
+{
+  
+}
 
 async runEmailer()
 {

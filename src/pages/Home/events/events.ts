@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';import { Storage } from '@ionic/storage';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { EventMainPage } from '../../event-info/event-main/event-main';
+import { EventInfoOnePage } from '../../event-info/event-info-one/event-info-one';
 /**
  * Generated class for the EventsPage page.
  *
@@ -8,12 +9,14 @@ import { EventMainPage } from '../../event-info/event-main/event-main';
  * on Ionic pages and navigation.
  */
 declare let lambda: any;
+declare let AWS: any;
 @IonicPage()
 @Component({
   selector: 'page-events',
   templateUrl: 'events.html',
 })
 export class EventsPage {
+  eventID: any;
   public events: string[] = [];
   public counter: number = 0;
   public amountOfRecords: number = 0;
@@ -56,13 +59,22 @@ export class EventsPage {
  openEvent(item:any)
 {
  // set a key/value
-  this.storage.set('guid', item.eventID.S);
+ // this.storage.set('guid', item.eventID.S);
 //   var guidData = 
 //   {
 //     guid: item.eventID.S
 //   }
 // this.navCtrl.setRoot(EventMainPage, guidData)
-this.navCtrl.setRoot(EventMainPage)
-}
+this.eventID = item.eventID.S
+lambda("CheckIfPlanner",{eventID: this.eventID, userID: AWS.config.credentials.identityId}).then(function(data:any){
+  this.isPlanner = data;
 
+  if(this.isPlanner)
+    this.navCtrl.setRoot(EventMainPage, {"guid": item.eventID.S})
+else
+  this.navCtrl.setRoot(EventInfoOnePage, {"guid": item.eventID.S})
+
+}.bind(this));
+
+}
 }
