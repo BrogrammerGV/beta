@@ -64,8 +64,6 @@ export class EventMainPage3 {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad EventMainPage');
-
     this.storage.get('guid').then((val) => {
       this.eventID = val;
       lambda("CheckIfPlanner",{eventID: this.eventID, userID: AWS.config.credentials.identityId}).then(function(data:any){
@@ -188,20 +186,19 @@ export class EventMainPage3 {
 
   postMessage(){
     if(!this.note){
-      //this.uploadToS3(this.generateGuid(),"");
       alert("Please enter a message.");
     }else{
-      console.log()
-      cognitoHelper("attr").then((data:any)=>{
+      cognitoHelper("attr").then(function(data: any){
         var today = new Date();
         var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
         var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
         var dateTime = date+' '+time;
         var condolenceGuid = this.generateGuid();
-        lambda("PutPostScriptCondolences",{condolenceID: condolenceGuid, eventID: this.eventID, dateSubmitted: dateTime, hasPicture: this.pictureData.length > 0, hasVideo: this.videoData.length > 0, note: this.note, submittedBy: data[2].Value + ' ' + data[3].Value, userID: AWS.config.credentials.identityId})
+        var params = {condolenceID: condolenceGuid, eventID: this.eventID, dateSubmitted: dateTime, hasPicture: !!(this.pictureData.length > 0), hasVideo: !!(this.videoData.length > 0), note: this.note, submittedBy: data[2].Value + ' ' + data[3].Value, userID: AWS.config.credentials.identityId};
+        
+        lambda("PutPostScriptCondolences",params)
         .then(function(data: any){
           if(data.errorMessage){
-            console.log(data.errorMessage);
             alert("An error has occurred, please try again later.");
           }else{
               this.getCondolences();
@@ -213,13 +210,12 @@ export class EventMainPage3 {
         }.bind(this))
         .catch(function(data:any){
           alert("An error has occurred, please try again later.");
-          console.log(data.errorMessage);
         }.bind(this));
       
         if(this.pictureData.length > 0){
           this.uploadToS3(condolenceGuid, this.pictureData);
         }
-      }).catch((err: any)=>{
+      }.bind(this)).catch((err: any)=>{
       })  
     }
   }
@@ -234,7 +230,6 @@ export class EventMainPage3 {
 
   addMessage(){
     cognitoHelper("attr").then((data:any)=>{
-      console.log(data[2].Value);
       this.moveSlides(5);
     }).catch((err: any)=>{
       this.moveSlides(2);
@@ -318,7 +313,6 @@ export class EventMainPage3 {
                   this.pictureData = "";
                   this.fileName = data[0].name;
                   this.videoData = data[0].fullPath;
-                  console.log(data);
                 },
                 (err: CaptureError) => console.error(err)
               );
@@ -378,11 +372,11 @@ export class EventMainPage3 {
     //     .catch(function(data:any){console.log(data); alert("error?");}).bind(this);
     // }else{
       lambda("UploadToS3",{fileName: condolenceGuid + this.fileName, data: this.data})
-      .then(function(data:any){console.log(data); 
+      .then(function(data:any){
         this.getCondolences();
         this.moveSlides(0);
       }).bind(this)
-      .catch(function(data:any){console.log(data); alert("error");}).bind(this);
+      .catch(function(data:any){alert("Unable to upload photo");}).bind(this);
     //}
   }
 }
