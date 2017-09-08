@@ -172,7 +172,7 @@
       <img src="assets/img/back.png" style="top:5px; left:0px; height: 1.5em; width: 1.5em; position: absolute; float: left" (click)="goBack()"/>
       <div style="overflow: auto; height: 100%; text-align: center; margin-left: 2em; margin-right: 0em; padding-right: 1em">
         <div class="blueText mainFont">
-          Add Meal
+          {{addOrEdit}} Meal
         </div>
         <hr class="horizontalBreak" style="margin-top: 0.5em; margin-bottom: 0.5em;" />
 
@@ -220,7 +220,7 @@
           <ion-list *ngIf="timeFilledOut" style="margin-right: 2%; margin-top: 5%;" no-lines>
             <ion-item>
               <ion-label stacked class="inputLabelText">Drop-off Location</ion-label>
-              <ion-input class="inputField" placeholder="Address, City, State" [(ngModel)]="dropOfLocation"></ion-input>
+              <ion-input class="inputField" placeholder="Address, City, State" [(ngModel)]="dropOffLocation"></ion-input>
             </ion-item>
             <ion-item>
               <ion-label stacked class="inputLabelText">Additional Instructions</ion-label>
@@ -249,7 +249,7 @@
       <img src="assets/img/back.png" style="top:5px; left:0px; height: 1.5em; width: 1.5em; position: absolute; float: left" (click)="goBack()"/>
       <div style="overflow: auto; height: 100%; text-align: center; margin-left: 2em; margin-right: 0em; padding-right: 1em">
         <div class="blueText mainFont">
-          Add Item
+          {{addOrEdit}} Item
         </div>
         <hr class="horizontalBreak" style="margin-top: 0.5em; margin-bottom: 0.2em;" />
 
@@ -344,6 +344,7 @@
           <button class="footerButtonDouble" (click)="claimTask()">Claim Task</button>
         </ion-col>
       </ion-row>
+      <button class="footerButton" (click)="addItem()" *ngIf="isPlanner === true && (showAddItem || showAddItemAll)">{{footerButtonText}}</button>
     </ion-slide>
     <ion-slide>
   <!-- Register -->
