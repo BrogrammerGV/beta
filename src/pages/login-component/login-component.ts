@@ -36,6 +36,8 @@ export class LoginComponentPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage,  public socialSharing: SocialSharing, public eventHandler: Events) { }
 
   ngOnInit(): any {
+    this.eventHandler.unsubscribe("tryLogin");
+    this.eventHandler.unsubscribe("loginBack");
     this.eventHandler.subscribe("tryLogin",(data:any)=>{this.next()});
     this.eventHandler.subscribe("loginBack",(data:any)=>{this.confirm = false});
   }

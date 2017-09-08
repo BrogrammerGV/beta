@@ -62,7 +62,7 @@ export class CareRegistryListPage {
 
     //AWS Variables
     additionalInstructions: string;
-    dropOfLocation: string;
+    dropOffLocation: string;
 
     careItemName: string;
     careItemShort: string;
@@ -85,6 +85,7 @@ export class CareRegistryListPage {
   public phoneNum: string = "";
   public deceasedFirst: string = "";
   public userFirst: string = "";
+  public addOrEdit: string = "Add";
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController,
         public datePicker: DatePicker, public alertCtrl: AlertController,public callNumber: CallNumber, public socialSharing: SocialSharing, public eventHandler: Events, public storage: Storage) {
@@ -128,12 +129,16 @@ export class CareRegistryListPage {
 
        this.loadCareCategoryInformation();
         this.getData();
+        this.eventHandler.unsubscribe("goToLogin");
+        this.eventHandler.unsubscribe("registered");
+        this.eventHandler.unsubscribe("loggedIn");
         this.eventHandler.subscribe("goToLogin",(data:any)=>{this.moveSlides(4);});
         this.eventHandler.subscribe("registered",(data:any)=>{this.moveSlides(3);});
         this.eventHandler.subscribe("loggedIn",(data:any)=>{this.moveSlides(5);});
     }
 
     addItem() {
+      this.addOrEdit = "Add";
 
         if (this.showConfirm) {
             this.showConfirm = false;
@@ -146,16 +151,16 @@ export class CareRegistryListPage {
         if (this.careItemName && this.careItemShort && this.careItemDate) {
             this.showConfirm = true;console.log(2);
             this.footerButtonText = "Add Another Item"
+            this.addCareItem();
             return;
         }
         if (this.timeFilledOut) {
-
             if (this.breakfastClicked || this.lunchClicked || this.dinnerClicked) {
-
-                if (this.dropOfLocation && this.additionalInstructions) {
+                if (this.dropOffLocation && this.additionalInstructions) {
                     this.timeFilledOut = false;
                     this.showConfirm = true;
                     this.footerButtonText = "Add Another Item";
+                    this.addCareItem();
                     console.log("3" + this.showConfirm);
                 }
                 else {
@@ -197,6 +202,68 @@ export class CareRegistryListPage {
         }
     }
 
+    addCareItem(){
+      console.log("addcareitem");
+      var itemSubName: string = 'n/a';
+      var additionalInstructions:string = 'n/a';
+      var dateNeeded: string = 'n/a';
+      var dropOffLocation: string = 'n/a';
+      var itemName: string = 'n/a';
+      var itemSubName: string = 'n/a';
+      var shortDescription: string = 'n/a';
+      var timeNeeded: string = 'n/a';
+      var careID: string = this.generateGuid();
+
+      if(this.addOrEdit = "Edit") careID = this.event.careID.S;
+
+      if(this.careCategory == "Meals"){
+        additionalInstructions = this.additionalInstructions;
+        dateNeeded = this.mealDate;
+        timeNeeded = this.mealTime;
+        dropOffLocation = this.dropOffLocation;
+        if(this.breakfastClicked) itemName = "Breakfast for ";
+        if(this.lunchClicked) itemName = "Lunch for ";
+        if(this.dinnerClicked) itemName = "Dinner for ";
+        itemName += this.mealDate;
+        itemSubName = "Deliver at " + this.mealTime;
+
+      }else{
+        shortDescription = this.careItemShort;
+        itemName = this.careItemName;
+        dateNeeded = this.careItemDate;
+        itemSubName = "On " + this.careItemDate;
+      }
+      var params = {
+        eventID: this.eventID, 
+        additionalInstructions: additionalInstructions, 
+        dateNeeded: dateNeeded,
+        dropOffLocation: dropOffLocation,  
+        itemName: itemName, 
+        itemSubName:  itemSubName,
+        shortDescription: shortDescription, 
+        timeNeeded: timeNeeded, 
+        careCategory: this.careCategory,
+        careID : careID
+      };
+
+      console.log(params);
+      lambda("PutCareRegistryItem",params)
+      .then(function(data: any){
+        //console.log(this);
+        console.log(data);
+        this.showItems(data);
+      }.bind(this)).catch(function(err)
+      {
+          console.log(err)
+      });
+    }
+    
+      generateGuid(){
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+          var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+          return v.toString(16);
+      });
+    }
 
     loadCareCategoryInformation() {
         this.careCategory = this.navParams.get("careCategory");
@@ -339,13 +406,26 @@ export class CareRegistryListPage {
     if(this.secondaryButtonText == "Edit Item"){
       if(this.careCategory == "Meals")
       {
-        this.mealDate = this.event.itemName.S;
-        this.mealTime = this.event.itemSubName.S
+        this.mealDate = this.event.dateNeeded.S;
+        this.mealTime = this.event.timeNeeded.S
+        this.dropOffLocation = this.event.dropOffLocation.S;
+        this.additionalInstructions = this.event.additionalInstructions.S;
+        if(this.event.itemName.S.substring(0,1) == "B") this.showBreakfast();
+        if(this.event.itemName.S.substring(0,1) == "L") this.showLunch();
+        if(this.event.itemName.S.substring(0,1) == "D") this.showDinner();
         this.showAddItem = true;
+        this.footerButtonText = "Edit Item";
+        this.addOrEdit = "Edit";
       }
       
-      else
-      this.showAddItemAll = true;
+      else{
+        this.careItemName = this.event.itemName.S;
+        this.careItemShort = this.event.shortDescription.S;
+        this.careItemDate = this.event.dateNeeded.S;
+        this.showAddItemAll = true;
+        this.footerButtonText = "Edit Item";
+        this.addOrEdit = "Edit";
+      }
       //this.navCtrl.push(CareRegistryAddItemPage);
     }else{
       this.contact();
