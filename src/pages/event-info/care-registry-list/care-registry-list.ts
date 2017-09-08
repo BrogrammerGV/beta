@@ -128,6 +128,9 @@ export class CareRegistryListPage {
 
        this.loadCareCategoryInformation();
         this.getData();
+        this.eventHandler.unsubscribe("goToLogin");
+        this.eventHandler.unsubscribe("registered");
+        this.eventHandler.unsubscribe("loggedIn");
         this.eventHandler.subscribe("goToLogin",(data:any)=>{this.moveSlides(4);});
         this.eventHandler.subscribe("registered",(data:any)=>{this.moveSlides(3);});
         this.eventHandler.subscribe("loggedIn",(data:any)=>{this.moveSlides(5);});

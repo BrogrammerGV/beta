@@ -38,6 +38,7 @@ export class RegisterPage {
       'email': ['', [Validators.required, this.emailValidator.bind(this)]]
     });
 
+    this.eventHandler.unsubscribe("register")
     this.eventHandler.subscribe("register",(data: any)=>{ this.tryRegister();})
   }
 
@@ -65,12 +66,13 @@ export class RegisterPage {
   }
 
   login(){
+    this.eventHandler.unsubscribe("register");
     this.eventHandler.publish("goToLogin");
   }
 
   tryRegister(){
     var message: string = "";
-    let alert = this.alertCtrl.create({
+    let alert1 = this.alertCtrl.create({
       title: 'Required',
       subTitle: '',
       buttons: ['OK']
@@ -89,8 +91,8 @@ export class RegisterPage {
     }
 
     if(message != ""){
-      alert.setSubTitle(message);
-      alert.present();
+      alert1.setSubTitle(message);
+      alert1.present();
     }else{
       registerCognito({
         ClientId: '4qedlf7cu5lo5r670tk6d90d19', /* required */
@@ -113,11 +115,12 @@ export class RegisterPage {
         ]
 
       }).then(function(data: any){
+        this.eventHandler.unsubscribe("register");
         this.eventHandler.publish("registered");
         //this.navCtrl.setRoot(Planning1Page, {user: this.userInfo});
       }.bind(this)).catch(function(err: any){
-        alert.setMessage(err.message);
-        alert.present();
+        alert1.setMessage(err.message);
+        alert1.present();
       });
     }
   }
