@@ -64,14 +64,14 @@ export class EventMainPage3 {
   }
 
   ionViewDidLoad() {
-    this.storage.get('guid').then((val) => {
-      this.eventID = val;
+  
+    this.eventID = this.navParams.get("eventID");
       lambda("CheckIfPlanner",{eventID: this.eventID, userID: AWS.config.credentials.identityId}).then(function(data:any){
         this.isPlanner = data;
       }.bind(this));
-      this.doSearch(val);
+      this.doSearch(this.eventID);
       this.getCondolences();
-    });
+
 
     this.eventHandler.unsubscribe("goToLogin");
     this.eventHandler.unsubscribe("registered");
@@ -138,11 +138,14 @@ export class EventMainPage3 {
   }
 
   goToEvents() {
-    this.navCtrl.setRoot(EventMainPage);
+    if(this.isPlanner)
+    this.navCtrl.setRoot(EventMainPage, {"eventID": this.eventID});
+    else
+      this.navCtrl.setRoot(EventInfoOnePage, {"guid": this.eventID})
   }
 
   goToCare() {
-    this.navCtrl.setRoot(EventMainPage2);
+    this.navCtrl.setRoot(EventMainPage2, {"eventID": this.eventID});
   }
 
   getCondolences() {

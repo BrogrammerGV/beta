@@ -5,6 +5,7 @@ import { Calendar } from '@ionic-native/calendar';
 import { EntryPage } from '../../entry/entry';
 import { CareRegistryListPage } from '../care-registry-list/care-registry-list';
 import { EventMainPage3 } from '../../event-info/event-main3/event-main3';
+import { EventMainPage2 } from '../../event-info/event-main2/event-main2';
 /**
  * Generated class for the EventInfoOnePage page.
  *
@@ -132,7 +133,7 @@ this.obitShort = this.obitShort.substring(0,25);
   }
 
   goToCare(){
-    this.navCtrl.push(CareRegistryListPage, {"eventID": this.eventID})
+    this.navCtrl.push(EventMainPage2, {"eventID": this.eventID})
   }
 
   goToCondol()

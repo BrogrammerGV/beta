@@ -71,7 +71,7 @@ imgURL: any;
     this.eventID = this.navParams.get("eventID");
 
 //temp
-this.imgURL = "assets/img/Obiticon.png"
+this.imgURL = "https://s3.amazonaws.com/inremembrancedata/"+this.eventID+"-profile.png"
     this.doSearch(this.eventID);
   }
    

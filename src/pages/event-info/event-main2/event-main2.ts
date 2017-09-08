@@ -211,7 +211,7 @@ goBackParticipant()
   }
 
   goToFeed() {
-    this.navCtrl.setRoot(EventMainPage3);
+    this.navCtrl.setRoot(EventMainPage3, {"eventID": this.eventID});
   }
 
   goToTransportation() {
@@ -334,9 +334,9 @@ goBackParticipant()
 
   goEventNav() {
     if(this.isPlanner)
-    this.navCtrl.setRoot(EventMainPage);
+    this.navCtrl.setRoot(EventMainPage, {"eventID": this.eventID});
     else
-    this.navCtrl.setRoot(EventInfoOnePage);
+    this.navCtrl.setRoot(EventInfoOnePage, {"guid": this.eventID});
   }
 
 }
