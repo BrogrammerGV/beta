@@ -333,8 +333,9 @@ goBackParticipant()
 
 
   goEventNav() {
+    console.log("isplanner: " +this.isPlanner);
     if(this.isPlanner)
-    this.navCtrl.setRoot(EventMainPage, {"eventID": this.eventID});
+    this.navCtrl.setRoot(EventMainPage, {"guid": this.eventID});
     else
     this.navCtrl.setRoot(EventInfoOnePage, {"guid": this.eventID});
   }
