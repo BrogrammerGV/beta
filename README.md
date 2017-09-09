@@ -8,7 +8,7 @@ and ( cd ) to pick that file folder.
 Open terminal by pressing cmd-space and type terminal and press enter.
 Then type these commands in one by one and saying yes to all prompts shown
 by our new awesome cli.
-<br>
+<br><br><br>
 git clone https://github.com/BrogrammerGV/beta.git<br>
 cd beta<br>
 ionic serve<br>
